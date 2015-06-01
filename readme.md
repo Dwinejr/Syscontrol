@@ -1,16 +1,6 @@
 # This is an H1
 
-## This is an H2
-
-###### This is an H6
-
-> This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
-> consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
-> Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
-> 
-> Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
-> id sem consectetuer libero luctus adipiscing.
-
-*   Red
-*   Green
-*   Blue
+Atuamos no mercado de automação por código de barras e coleta de dados há 23 anos, distribuindo e integrando as marcas líderes de mercado mundial. Possuímos a mais moderna e atual tecnologia para automação, nossa equipe de engenheiros e técnicos altamente qualificados e treinados pelos fabricantes, está apta a prestar a melhor assistência do mercado, disponibilizando para cada cliente, soluções de acordo com sua necessidade e de melhor custo/benefício.
+Integramos nossas soluções aos principais ERP'S disponíveis no mercado brasileiro (SAP, TOTVS, etc).
+Diante da competividade do mercado, invista na solução correta que vá realmente garantir agilidade, confiabilidade e redução de custos.
+Portanto, antes de tomar qualquer decisão, fale conosco, pois certamente poderemos simplificar os caminhos para a automação da sua empresa.
