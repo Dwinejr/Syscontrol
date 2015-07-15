@@ -22,7 +22,7 @@ define('DB_NAME', 'syscontrol');
 define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'portnoy');
+define('DB_PASSWORD', '');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
@@ -78,3 +78,6 @@ if ( !defined('ABSPATH') )
 
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
+
+/** Adicionei para desenvolvimento local, remover posteriormente */
+define('FS_METHOD', 'direct');

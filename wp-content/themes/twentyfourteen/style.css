@@ -45,6 +45,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
  * 10.0 - Multisite
  * 11.0 - Media Queries
  * 12.0 - Print
+ * 13.0 - Forms
  * -----------------------------------------------------------------------------
  */
 
@@ -4319,3 +4320,20 @@ a.post-thumbnail:hover {
 		line-height: 36px;
 	}
 }
+
+/**
+ * 13.0 Forms
+ *
+ * -----------------------------------------------------------------------------
+ */
+
+.ninja-forms-cont input[type="text"], .ninja-forms-cont select, .ninja-forms-cont textarea, .ninja-forms-cont input[type="select"]  {
+	font-size: 32px !important;
+	padding: 15px;
+}
+
+.ninja-forms-field select {
+	font-size: 26px !important;
+}
+
+
