@@ -1,0 +1,57 @@
+/*
+Theme Name:     Syscontrol Customizr
+Theme URI:      http://themesandco.com/customizr
+Description:    Customizações no tema para se adequar ao que desejamos no layout da Syscontrol
+Author:         Dwine Júnior (dwinejr)
+Author URI:     http://www.agade.com.br
+Template:       customizr
+Version:        1.0.0
+*/
+
+/* Your awesome customizations start right here !
+-------------------------------------------------------------- */
+
+#footer_one .widget-title:before {
+    speak: none;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    font-style: normal;
+    color: #fff;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: "\f0f7";    
+}
+
+#footer_two .widget-title:before {
+    speak: none;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    font-style: normal;
+    color: #fff;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: "\f098";
+}
+
+#footer_three .widget-title:before {
+    speak: none;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    font-style: normal;
+    color: #fff;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: "\f0e0";
+}
+
+footer#footer a,footer#footer p {
+font-size: 13px;
+}
+
+/* "\f0f7" - outro endereço */ 
