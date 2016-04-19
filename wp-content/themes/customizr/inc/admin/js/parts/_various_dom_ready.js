@@ -38,11 +38,6 @@
       $(this).toggleClass('open');
     } );
 
-    /* BUTTON JUMP TO POST LIST */
-    $('.tc-navigate-to-post-list').click( function() {
-      $('#accordion-section-tc_post_list_settings > .accordion-section-title').trigger('click');
-    });
-
     /* RECENTER CURRENT SECTIONS */
     $('.accordion-section').not('.control-panel').click( function () {
       _recenter_current_section($(this));
@@ -60,7 +55,7 @@
 
     /* ADD GOOGLE IN TITLE */
     $g_logo = $('<img>' , {class : 'tc-title-google-logo' , src : 'http://www.google.com/images/logos/google_logo_41.png' , height : 20 });
-    $('#accordion-section-tc_fonts').prepend($g_logo);
+    $('#accordion-section-fonts_sec').prepend($g_logo);
 
 
     /* CHECK */
@@ -80,8 +75,7 @@
 
     /* SELECT */
     //Exclude skin
-    $('select[data-customize-setting-link]').not('select[data-customize-setting-link="tc_theme_options[tc_skin]"]')
-      .not('select[data-customize-setting-link="tc_theme_options[tc_fonts]"]')
+    $('select[data-customize-setting-link]').not('.select2')
       .each( function() {
         $(this).selecter({
         //triggers a change event on the view, passing the newly selected value + index as parameters.
@@ -91,6 +85,16 @@
         });
     });
 
+    //Multipicker
+    //http://ivaynberg.github.io/select2/#documentation
+    $('select.tc_multiple_picker').select2({
+      closeOnSelect: false,
+      formatSelection: tcEscapeMarkup
+    });
+    function tcEscapeMarkup(obj) {
+      //trim dashes
+      return obj.text.replace(/\u2013|\u2014/g, "");
+    }
 
     //SKINS
     //http://ivaynberg.github.io/select2/#documentation

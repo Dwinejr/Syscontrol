@@ -40,7 +40,7 @@ function osc_theme_toggle($params, $content = null) {
         <div class="panel panel-default{$const['EBS_CONTAINER_CLASS']}">
             <div class="panel-heading{$const['EBS_CONTAINER_CLASS']}">
               <h4 class="panel-title{$const['EBS_CONTAINER_CLASS']}">
-                <a class="accordion-toggle{$const['EBS_CONTAINER_CLASS']}" data-toggle="collapse"
+                <a class="accordion-toggle{$const['EBS_CONTAINER_CLASS']} collapsed" data-toggle="collapse"
                 data-parent="#oscitas-accordion-{$index}"
                 href="#{$id}">
                 {$title}

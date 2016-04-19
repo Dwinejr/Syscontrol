@@ -80,12 +80,12 @@ if(ebs_editor_opt=='dropdown'){
                             selected_content='Insert Buttons Groups'
                             tinyMCE.activeEditor.selection.setContent('[btngrptoolbar class="yourcustomclass"][/btngrptoolbar]');
                         }
-                        else if(value == prefix+"toggles"){
-                            tinyMCE.activeEditor.selection.setContent('[toggles class="yourcustomclass"]<br/>[toggle title="Accordion number 1"]Toggle 1 content goes here.[/toggle]<br/>[toggle title="Accordion number 2"]Toggle 2 content goes here.[/toggle]<br/>[toggle title="Accordion number 3"]Toggle 3 content goes here.[/toggle]<br/>[toggle title="Accordion number 4"]Toggle 4 content goes here.[/toggle]<br/>[/toggles]');
-                        }
-                        else if(value == prefix+"tabs"){
-                            tinyMCE.activeEditor.selection.setContent('[tabs class="yourcustomclass"]<br/>[tab title="Tab number 1" active="active"]Tab 1 content goes here.[/tab]<br/>[tab title="Tab number 2"]Tab 2 content goes here.[/tab]<br/>[tab title="Tab number 3"]Tab 3 content goes here.[/tab]<br/>[tab title="Tab number 4"]Tab 4 content goes here.[/tab]<br/>[/tabs]');
-                        }
+                        //else if(value == prefix+"toggles"){
+                        //    tinyMCE.activeEditor.selection.setContent('[toggles class="yourcustomclass"]<br/>[toggle title="Accordion number 1"]Toggle 1 content goes here.[/toggle]<br/>[toggle title="Accordion number 2"]Toggle 2 content goes here.[/toggle]<br/>[toggle title="Accordion number 3"]Toggle 3 content goes here.[/toggle]<br/>[toggle title="Accordion number 4"]Toggle 4 content goes here.[/toggle]<br/>[/toggles]');
+                        //}
+                        //else if(value == prefix+"tabs"){
+                        //    tinyMCE.activeEditor.selection.setContent('[tabs class="yourcustomclass"]<br/>[tab title="Tab number 1" active="active"]Tab 1 content goes here.[/tab]<br/>[tab title="Tab number 2"]Tab 2 content goes here.[/tab]<br/>[tab title="Tab number 3"]Tab 3 content goes here.[/tab]<br/>[tab title="Tab number 4"]Tab 4 content goes here.[/tab]<br/>[/tabs]');
+                        //}
                         else{
 
                             eval('_create_tinyMCE_dropdown('+func+',"'+width+'","'+height+'")');

@@ -3,8 +3,8 @@ Contributors: oscitas
 Link: http://www.osCitasthemes.com
 Tags: Wordpress Shortcodes, Wordpress Bootstrap, Wordpress Bootstrap Shortcode, Bootstrap, Responsive pages, Editor plugin, Bootstrap Shortcode, TinyMCE
 Requires at least: 3.0
-Tested up to: 4.0
-Stable tag: 4.4
+Tested up to: 4.4
+Stable tag: 4.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: http://oscitasthemes.com/support-our-free-plugins/
@@ -15,7 +15,7 @@ Easy Bootstrap Shortcode enable you to add bootstrap 3.0.3 styles in your pages,
 
 >For plugin support go to [http://support.oscitasthemes.com](http://support.oscitasthemes.com)
 
->Ready for Wordpress 4.0 and support Twitter 3.2.0
+>Ready for Wordpress 4.3 and support Twitter 3.2.0
 
 Easy Bootstrap Shortcode is bootstrap 3.2.0 compatible plugin which add icons to wordpress editor (tinyMCE Shortcode Buttons) and one can add bootstrap style to their website just by clicking on tinyMCE  editor icon.
 
@@ -148,6 +148,50 @@ It's that simple ... just what the name suggests
 == Changelog ==
 
 >= Note : we have removed the Line Separator, Dropcaps, Youtube & Vimeo video, Boxesframes, Horizontal Rule, Testimonial, Section Heading, Social, Lead,Page Header, Highlights shortcodes as these are PRO version features, which were committed to free version by mistake. =
+
+
+= 4.5.4 =
+
+* [Fixes] Resolved the scripts 404 error.
+* [Update] Added screen shots of PRO version.
+
+= 4.5.3 =
+
+* [Fixes] Resolved js localization issue, which show up after last update..
+
+
+= 4.5.2 =
+
+* [Fixes] Resolved the scripts 404 error, after making some changes :) in the solution provided by Baden.
+* [Fixes] Fixed the image issue for dropdown button.
+
+
+
+
+= 4.5.1 =
+
+* [Update] Updated slider shortcode as per the suggestion by TheFitCoder.
+
+= 4.5.0 =
+
+* [Update] Now language support is there.
+
+
+= 4.4.6 =
+
+* [Update] Now support the style option for table shortcode.
+* [Fixes] Removed the <br /> tag from tabs.
+
+
+
+= 4.4.5 =
+
+* [Update] Fixed the widget constructor method for WP 4.3.
+
+
+= 4.4.4 =
+
+* [Update] Option to add the "rel" attribute for links in button.
 
 
 = 4.4.3 =

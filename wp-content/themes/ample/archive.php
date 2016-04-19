@@ -16,7 +16,10 @@
       <div class="inner-wrap">
          <div id="primary">
             <div id="content">
-
+               <?php
+                  // Show an optional term description.
+                  the_archive_description( '<div class="taxonomy-description">', '</div>' );
+               ?>
                <?php if ( have_posts() ) : ?>
 
                   <?php while ( have_posts() ) : the_post(); ?>

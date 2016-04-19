@@ -15,9 +15,9 @@
 	<div id="primary">
 		<div id="content" class="clearfix">
 			<section class="error-404 not-found">
-				<div class="page-content">			
+				<div class="page-content">
 						<header class="page-header">
-							<h1 class="page-title"><?php _e( 'Oops! That page can&rsquo;t be found.', 'esteem' ); ?></h1>
+							<h2 class="page-title"><?php _e( 'Oops! That page can&rsquo;t be found.', 'esteem' ); ?></h2>
 						</header>
 						<p><?php _e( 'It looks like nothing was found at this location. Try the search below.', 'esteem' ); ?></p>
 						<?php get_search_form(); ?>

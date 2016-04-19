@@ -16,10 +16,10 @@ function ample_featured_image_slider() { ?>
       <div class="big-slider">
          <?php
          for($i=1; $i<=4; $i++) {
-            $ample_slider_image = of_get_option('ample_slider_image' . $i , '');
-            $ample_slider_title = of_get_option('ample_slider_title' . $i , '');
-            $ample_slider_button_text = of_get_option('ample_slider_button_text' . $i , '');
-            $ample_slider_link = of_get_option('ample_slider_link' . $i , '');
+            $ample_slider_image = ample_option('ample_slider_image' . $i , '');
+            $ample_slider_title = ample_option('ample_slider_title' . $i , '');
+            $ample_slider_button_text = ample_option('ample_slider_button_text' . $i , '');
+            $ample_slider_link = ample_option('ample_slider_link' . $i , '');
 
             if ( $i == 1 ) { $classes = "slides displayblock"; } else { $classes = "slides displaynone"; }
 
@@ -39,14 +39,14 @@ function ample_featured_image_slider() { ?>
                      </div>
                   <?php } ?>
                   <figure>
-                     <img src="<?php echo esc_url( $ample_slider_image ); ?>" >
+                     <img alt="<?php echo esc_attr( $ample_slider_title ); ?>" src="<?php echo esc_url( $ample_slider_image ); ?>" >
                   </figure>
                </div>
             <?php }
          } ?>
       </div>
-      <div class="slide-next" href="#"></div>
-      <div class="slide-prev" href="#"></div>
+      <div class="slide-next"></div>
+      <div class="slide-prev"></div>
    </div><!-- .big-slider-wrapper -->
 <?php }
 endif;
@@ -102,6 +102,10 @@ function ample_header_title() {
       elseif ( is_year() ) :
          $ample_header_title = sprintf( __( 'Year: %s', 'ample' ), '<span>' . get_the_date( 'Y' ) . '</span>' );
 
+      elseif ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) :
+         $ample_header_title = woocommerce_page_title( false );
+
+
       else :
          $ample_header_title = __( 'Archives', 'ample' );
 
@@ -142,7 +146,7 @@ if ( ! function_exists( 'ample_breadcrumb' ) ) :
  */
 function ample_breadcrumb() {
    if( function_exists( 'bcn_display' ) ) {
-      echo '<div class="breadcrumb">';
+      echo '<div class="breadcrumb" xmlns:v="http://rdf.data-vocabulary.org/#">';
       echo '<span class="breadcrumb-title">'.__( 'You are here:', 'ample' ).'</span>';
       bcn_display();
       echo '</div> <!-- .breadcrumb -->';

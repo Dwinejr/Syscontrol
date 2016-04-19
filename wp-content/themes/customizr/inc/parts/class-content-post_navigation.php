@@ -94,7 +94,7 @@ if ( ! class_exists( 'TC_post_navigation' ) ) :
                   <li class="previous">
                     <span class="nav-previous">
                       <?php
-                        $singular_nav_previous_text   = apply_filters( 'tc_singular_nav_previous_text', _x( $prev_arrow , 'Previous post link' , 'customizr' ) );
+                        $singular_nav_previous_text   = apply_filters( 'tc_singular_nav_previous_text', call_user_func( '_x',  $prev_arrow , 'Previous post link' , 'customizr' ) );
                         $previous_post_link_args      = apply_filters(
                           'tc_previous_single_post_link_args' ,
                           array(
@@ -115,7 +115,7 @@ if ( ! class_exists( 'TC_post_navigation' ) ) :
                   <li class="next">
                     <span class="nav-next">
                         <?php
-                        $singular_nav_next_text       = apply_filters( 'tc_singular_nav_next_text', _x( $next_arrow , 'Next post link' , 'customizr' ) );
+                        $singular_nav_next_text       = apply_filters( 'tc_singular_nav_next_text', call_user_func( '_x', $next_arrow , 'Next post link' , 'customizr' ) );
                         $next_post_link_args      = apply_filters(
                           'tc_next_single_post_link_args' ,
                           array(
@@ -134,9 +134,9 @@ if ( ! class_exists( 'TC_post_navigation' ) ) :
                 <?php endif; ?>
               </ul>
 
-          </nav><!-- #<?php echo $html_id; ?> .navigation -->
+          </nav><!-- //#<?php echo $html_id; ?> .navigation -->
 
-        <?php elseif ( $wp_query->max_num_pages > 1 &&  'archive' == $_context ) : ?>
+        <?php elseif ( $wp_query->max_num_pages > 1 && in_array($_context, array('archive', 'home') ) ) : ?>
 
           <nav id="<?php echo $html_id; ?>" class="<?php echo $post_nav_class; ?>" role="navigation">
 
@@ -188,7 +188,7 @@ if ( ! class_exists( 'TC_post_navigation' ) ) :
 
               </ul>
 
-          </nav><!-- #<?php echo $html_id; ?> .navigation -->
+          </nav><!-- //#<?php echo $html_id; ?> .navigation -->
 
         <?php endif; ?>
 
@@ -209,11 +209,12 @@ if ( ! class_exists( 'TC_post_navigation' ) ) :
       *
       */
       function tc_get_context(){
-
         if ( is_page() )
           return 'page';
         if ( is_single() && ! is_attachment() )
           return 'single'; // exclude attachments
+        if ( is_home() && 'posts' == get_option('show_on_front') )
+          return 'home';
         if ( !is_404() && !tc__f( '__is_home_empty') )
           return 'archive';
 

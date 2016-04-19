@@ -19,7 +19,13 @@ function open_dialogue(pluginObj,width,height){
 
     var html_content=eval('ebs_return_html_'+pluginObj.pluginName+'(pluginObj)');
     html_content=jQuery(html_content).get(0).outerHTML;
-    var $template_markup='<div id="oscitas-easy-bootstrap-shortcode-container" '+$width+' class="osc-dialog oscitas-easy-bootstrap-shortcode mfp-ebsp"><h2>'+pluginObj.title+'</h2>'  +html_content+
+    var onClickHtml = '';
+    //alert(pluginObj.showprobtn);
+    if (pluginObj.showprobtn == undefined || pluginObj.showprobtn == true) {
+        onClickHtml = '<div class="ebs-pro-btn"><a href="javascript:;" onclick="jQuery(\'.ebs-default-options\').toggle();jQuery(\'.pro-version-image\').toggle();jQuery(\'#view-pro-options-btn\').toggle();jQuery(\'#hide-pro-options-btn\').toggle();"><span id="view-pro-options-btn">View Pro Options</span><span id="hide-pro-options-btn" style="display: none;">Hide Pro Options</span></a></div>';
+    }
+
+    var $template_markup='<div id="oscitas-easy-bootstrap-shortcode-container" '+$width+' class="osc-dialog oscitas-easy-bootstrap-shortcode mfp-ebsp"><h2>'+pluginObj.title+'</h2>'+onClickHtml  +html_content+
         '</div>';
 
     if(typeof(height)==='undefined') height = 'auto';

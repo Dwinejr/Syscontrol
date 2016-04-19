@@ -26,7 +26,7 @@
 .osc-logo-setting {
     position: absolute;
     right: 8px;
-    top: 8px;
+    top: 6px;
 }
 .ebs_details {
     background: none repeat scroll 0 0 #F9F9F9;
@@ -39,7 +39,13 @@
     -webkit-border-radius: 3px;
     -ms-border-radius: 3px;
 }
-
+.osc-setting-desc-box{
+    background: #ffffff none repeat scroll 0 0;
+    border: 1px solid #dddddd;
+    padding: 10px;
+    display: table;
+}
+.osc-setting-desc-box img{max-width:100%}
 .ebs_details label {
     color: #474747;
     line-height: 30px;
@@ -77,7 +83,7 @@ label.ebs_editor_label {
     padding: 5px;
     border: 1px solid #F1F1F1;
     width: auto;
-    margin:10px 15px 10px 0;
+    margin:10px 10px 10px 0;
 }
 label.ebs_editor_label:hover, .ebs_editor_label.val_selected {
     background: #fff;
@@ -86,7 +92,13 @@ label.ebs_editor_label:hover, .ebs_editor_label.val_selected {
     box-shadow: 0 0 3px #C4C4C4;
     float:  left;
     width: auto;
-    margin: 10px 15px 10px 0;
+    margin: 10px 10px 10px 0;
+}
+label.ebs_editor_label:last-child:hover{
+    background: none;
+    border:  1px solid #F1F1F1;
+    box-shadow: none;
+    cursor: auto;
 }
 #ebs_custom_css {
     width: 600px;

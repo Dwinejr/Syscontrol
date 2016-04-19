@@ -1,6 +1,7 @@
 //Falls back to default params
 var TCParams = TCParams || {
-	centerAllImg: 1,
+	DisabledFeatures : {},
+  centerAllImg: 1,
 	FancyBoxAutoscale: 1,
 	FancyBoxState: 1,
 	HasComments: "",
@@ -13,16 +14,20 @@ var TCParams = TCParams || {
 	SliderHover: 1,
 	SliderName: "demo",
   centerSliderImg : 1,
-	SmoothScroll: "linear",
-  SmoothScrollExclude : ['[class*=edd]', '.tc-carousel-control', '.carousel-control', '[data-toggle="modal"]', '[data-toggle="dropdown"]', '[data-toggle="tooltip"]', '[data-toggle="popover"]', '[data-toggle="collapse"]', '[data-toggle="tab"]', '[class*=upme]'],
-	stickyCustomOffset: 0,
+	SmoothScroll: { Enabled : 1 , Options : {} },
+	anchorSmoothScroll: "linear",
+  anchorSmoothScrollExclude : {
+      simple : ['[class*=edd]', '.tc-carousel-control', '.carousel-control', '[data-toggle="modal"]', '[data-toggle="dropdown"]', '[data-toggle="tooltip"]', '[data-toggle="popover"]', '[data-toggle="collapse"]', '[data-toggle="tab"]', '[class*=upme]', '[class*=um-]'],
+      deep : { classes : [], ids : [] }
+    },
+	stickyCustomOffset: { _initial : 0, _scrolling : 0, options : { _static : true, _element : "" } },
 	stickyHeader: 1,
 	dropdowntoViewport: 1,
 	timerOnScrollAllBrowsers:1,
   extLinksStyle :1,
   extLinksTargetExt:1,
   extLinksSkipSelectors: {
-    classes : ['btn'],
+    classes : ['btn', 'button'],
     ids:[]
   },
   dropcapEnabled:1,
@@ -34,7 +39,12 @@ var TCParams = TCParams || {
     ids : []
   },
   imgSmartLoadEnabled:0,
-  imgSmartLoadOpts: {},
+  imgSmartLoadOpts: {
+    parentSelectors: ['.article-container', '.__before_main_wrapper', '.widget-front'],
+    opts : { excludeImg: ['.tc-holder-img'] }
+  },
   goldenRatio : 1.618,
-  gridGoldenRatioLimit : 350
+  gridGoldenRatioLimit : 350,
+  isSecondMenuEnabled : 0,
+  secondMenuRespSet : 'in-sn-before'
 };

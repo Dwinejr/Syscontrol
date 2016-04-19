@@ -116,12 +116,20 @@ function osc_theme_slider($params, $content = null) {
     if(!empty($image)){
         $_oscitas_slider[$index]['bullets'][]='<li data-target="#oscitas-slider-' . $index . '" data-slide-to="'.$slideid.'" class="'.$active.'"></li>';
         $_oscitas_slider_slides[$index][$slideid]=array();
+
+
+        if (!empty($caption)) {
+            $caption = '<p class="ebs-caption">'.$caption.'</p>';
+        }
+        if (!empty($content)) {
+            $caption = '<p class="ebs-caption">'.$content.'</p>';
+        }
         $_oscitas_slider[$index]['details'][] = <<<EOS
         <div class="item {$active}{$const['EBS_CONTAINER_CLASS']}">
       <img src="{$image}" >
       <div class="carousel-caption{$const['EBS_CONTAINER_CLASS']}">
         <h3 class="ebs-caption">{$title}</h3>
-        <p class="ebs-caption">{$caption}</p>
+        {$caption}
       </div>
       </div>
 EOS;

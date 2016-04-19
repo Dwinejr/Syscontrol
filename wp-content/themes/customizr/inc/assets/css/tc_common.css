@@ -1,5 +1,5 @@
 /*!
- * Customizr v3.3.26
+ * Customizr v3.4.20
  *
  * Licensed under the GNU General Public License v2 or later
  * http://www.gnu.org/licenses/gpl-2.0.html
@@ -360,9 +360,11 @@ body {
   float: left;
   margin-left: 2.12765957%;
   *margin-left: 2.07446809%;
+  margin-right: 0;
 }
 .row-fluid [class*="span"]:first-child {
   margin-left: 0;
+  margin-right: 0;
 }
 .row-fluid .controls-row [class*="span"] + [class*="span"] {
   margin-left: 2.12765957%;
@@ -519,6 +521,10 @@ body {
 .row-fluid [class*="span"].pull-right {
   float: right;
 }
+[class*="span"].pull-left,
+.row-fluid [class*="span"].pull-left {
+  float: left;
+}
 .container {
   margin-right: auto;
   margin-left: auto;
@@ -555,7 +561,7 @@ p {
 }
 .lead {
   margin-bottom: 20px;
-  font-size: 26px;
+  font-size: 21px;
   font-weight: 200;
   line-height: 30px;
 }
@@ -3499,7 +3505,7 @@ input[type="submit"].btn.btn-mini {
   left: 0;
   display: block;
   float: left;
-  margin: 5px 10px 0 0;
+  margin: 0 10px 0 0;
 }
 .navbar .nav.pull-right {
   float: right;
@@ -4656,7 +4662,9 @@ a.badge:focus {
  => HEADER
  => LOGO/TITLE
  => NAVBAR
- => MENU
+ => REGULAR MENU
+ => SIDE MENU
+ => SECONDARY MENU
  => SOCIAL
  => BREADCRUMB
  => SLIDER
@@ -4665,6 +4673,7 @@ a.badge:focus {
  => SIDEBARS STUFF
  => POST THUMBNAILS
  => POST GRID
+ => PLACEHOLDERS / DISMISS NOTICES
  => WP SPECIFICS
  => FOOTER
  => ADMIN BAR
@@ -4713,23 +4722,6 @@ body {
 .ie.tc-fade-hover-links .nav > li > a {
   transition: none !important;
 }
-/* External Links style */
-a + span.tc-external:after {
-  font-family: 'genericons';
-  font-size: 1.25em;
-  content: "\f442";
-  speak: none;
-  font-style: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 0;
-  padding-left: 0;
-  position: relative;
-  text-decoration: none!important;
-  top: 5px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 ul,
 ol {
   padding: 0px 5px;
@@ -4754,400 +4746,274 @@ section {
 }
 /* ICONS
   -------------------------------------------------- */
-/*@font-face {
-    font-family: 'genericons';
-    src: url( 'fonts/fonts/genericons-regular-webfont.eot' );
-    src: url( 'fonts/fonts/genericons-regular-webfont.eot?#iefix' ) format( 'embedded-opentype' ),
-         url( 'fonts/fonts/genericons-regular-webfont.woff' ) format( 'woff' ),
-         url( 'fonts/fonts/genericons-regular-webfont.ttf' ) format( 'truetype' ),
-         url( 'fonts/fonts/genericons-regular-webfont.svg#genericonsregular' ) format( 'svg' );
-}
-
-@font-face {
-    font-family: 'entypo';
-    src: url( 'fonts/fonts/entypo.eot' );
-    src: url( 'fonts/fonts/entypo.eot?#iefix' ) format( 'embedded-opentype' ),
-         url( 'fonts/fonts/entypo.woff' ) format( 'woff' ),
-         url( 'fonts/fonts/entypo.ttf' ) format( 'truetype' ),
-         url( 'fonts/fonts/entypo.svg#genericonsregular' ) format( 'svg' );
-}
-*/
-[data-icon]:before {
-  font-family: 'genericons';
-  content: attr(data-icon);
+.tc-wc-menu .nav > li > a:before,
+#wpadminbar #wp-admin-bar-tc-customizr-help .ab-item:before,
+li#wp-admin-bar-tc-customizr-help a:before,
+a + span.tc-external:after,
+.tc-placeholder-wrap:before,
+.tc-admin-notice:before,
+h2.comments-title:before,
+h3#reply-title:before,
+.btt-arrow,
+.format-icon:before,
+.icon-bubble:before,
+.widget h3:before,
+.colophon .credits a[class*=icon-]:before,
+.social-block a:before {
+  font-family: 'FontAwesome';
   speak: none;
   font-weight: normal;
   font-variant: normal;
   text-transform: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-}
-.icon-bubble:before {
-  font-family: 'genericons';
-  speak: none;
   font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
   line-height: 1;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-.icon-bubble:before {
-  content: "\f300";
+#footer .white-icons .widget li:before {
+  color: #FFF;
 }
 /*SOCIAL ICONS*/
-.social-block a:before {
-  font-family: 'genericons';
-  speak: none;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-}
+.colophon .credits a[class*=icon-]:focus,
+.colophon .credits a[class*=icon-]:hover,
 .social-block a:hover {
   text-decoration: none;
   opacity: 1;
 }
 .icon-google:before {
-  content: "\f206";
+  content: "\f0d5";
 }
 .icon-facebook:before {
-  content: "\f204";
+  content: "\f09a";
 }
 .icon-twitter:before {
-  content: "\f202";
+  content: "\f099";
 }
 .icon-feed:before {
-  content: "\f413";
+  content: "\f09e";
 }
 .icon-flux:before {
-  content: "\f413";
+  content: "\f09e";
 }
 .icon-github:before {
-  content: "\f200";
+  content: "\f09b";
 }
 .icon-dribbble:before {
-  content: "\f201";
+  content: "\f17d";
 }
 .icon-pinterest:before {
-  content: "\f209";
+  content: "\f231";
 }
 .icon-youtube:before {
-  content: "\f213";
+  content: "\f167";
 }
 .icon-linkedin:before {
-  content: "\f208";
+  content: "\f0e1";
 }
 .icon-wordpress:before {
-  content: "\f205";
+  content: "\f19a";
 }
 .icon-instagram:before {
-  content: "\f215";
+  content: "\f16d";
 }
 .icon-flickr:before {
-  content: "\f211";
+  content: "\f16e";
 }
 .icon-tumblr:before {
-  content: "\f214";
+  content: "\f173";
+}
+.icon-email:before {
+  content: "\f0e0";
+}
+.icon-vk:before {
+  content: "\f189";
+}
+.icon-yelp:before {
+  content: "\f1e9";
+}
+.icon-xing:before {
+  content: "\f168";
+}
+/* icons in social block - fine alignment */
+.social-block a.social-icon {
+  top: -0.04em;
+}
+a.social-icon.icon-feed {
+  top: -0.01em;
+}
+a.social-icon.icon-youtube {
+  top: -0.15em;
+}
+a.social-icon.icon-wordpress {
+  top: -0.1em;
+}
+a.social-icon.icon-twitter {
+  top: 0.01em;
+}
+a.social-icon.icon-instagram {
+  top: 0;
+}
+/* Social icons floating in sidebars and colophon left block */
+.tc-sidebar .social-block a.social-icon,
+.colophon .social-block a.social-icon {
+  float: left;
+  width: auto;
+}
+.colophon .social-block:before,
+.colophon .social-block:after,
+.tc-sidebar .social-block:before,
+.tc-sidebar .social-block:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.colophon .social-block:after,
+.tc-sidebar .social-block:after {
+  clear: both;
 }
 /*ICONS FOR WIDGETS*/
 .widget h3:before {
-  font-family: 'genericons';
-  speak: none;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  padding-right: 5px;
-  top: 8px;
-  font-size: 1.5em;
+  padding-right: 10px;
   position: relative;
-  line-height: 0px;
+  top: -1.3px;
 }
 .widget_social h3:before {
-  font-family: 'entypo';
-  top: 2px;
-  font-size: 2em;
-  content: "\E73C";
+  content: "\f1e0";
 }
 .widget_categories h3:before {
-  font-family: 'entypo';
-  top: 2px;
-  font-size: 2em;
-  content: "\1F4C1";
-}
-/* hack for safari, uses the browser body.class added with a script */
-.safari .widget_categories h3:before,
-.chrome .widget_categories h3:before {
-  font-family: 'genericons';
-  top: 8px;
-  font-size: 1.5em;
-  content: '\f301';
+  content: "\f07c";
 }
 .widget_archive h3:before {
-  font-family: 'entypo';
-  top: 2px;
-  font-size: 2em;
-  content: "\E800";
+  content: "\f187";
 }
 .widget_tag_cloud h3:before {
-  content: "\f302";
+  content: "\f02b";
+  top: .2px;
 }
 .widget_recent_entries h3:before {
-  font-family: 'entypo';
-  top: 2px;
-  font-size: 2em;
-  content: "\1F4E3";
-}
-/* hack for safari, uses the browser body.class added with a script */
-.safari .widget_recent_entries h3:before,
-.chrome .widget_recent_entries h3:before {
-  font-family: 'genericons';
-  top: 8px;
-  font-size: 1.5em;
-  content: '\f403';
+  content: "\f0a1";
 }
 .widget_meta h3:before {
-  content: "\f442";
-}
-/* hack to render white color icons if skin is grey */
-.white-icons .widget h3:before {
-  color: #FFF;
-}
-#footer .white-icons .widget li:before {
-  color: #FFF;
+  content: "\f08e";
+  top: 0.5px;
 }
 .widget_calendar h3:before {
-  content: "\f307";
+  content: "\f073";
+  top: -1.6px;
 }
 .widget_pages h3:before {
-  font-family: 'entypo';
-  top: 2px;
-  font-size: 2em;
-  content: "\1F56A";
-}
-/* hack for safari, uses the browser body.class added with a script */
-.safari .widget_pages h3:before,
-.chrome .widget_pages h3:before {
-  font-family: 'genericons';
-  top: 8px;
-  font-size: 1.5em;
-  content: '\f436';
+  content: "\f0e8";
 }
 .widget_recent_comments h3:before {
-  content: "\f108";
+  content: "\f086";
 }
 .widget_search h3:before {
-  content: "\f400";
+  content: "\f002";
+  top: -1.9px;
 }
 .widget_nav_menu h3:before {
-  content: "\f419";
-  top: 4px;
-  font-size: 1em;
-  padding-right: 10px;
+  content: "\f0c9";
 }
 /*-- POST FORMATS AND ARCHIVE ICONS */
 .format-icon:before {
-  font-family: 'entypo';
-  speak: none;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
   padding-right: 10px;
-  font-size: 1.2em;
   opacity: 0.2;
   position: relative;
-  top: 8px;
+  top: -1.3px;
 }
 .entry-summary.format-icon:before,
 .entry-content.format-icon:before {
-  font-family: 'entypo';
-  speak: none;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 7px;
-  top: -26px;
-  -webkit-font-smoothing: antialiased;
   padding-right: 13px;
-  font-size: 6.0em;
+  font-size: 4em;
   opacity: 0.3;
-  position: relative;
   display: block;
   float: left;
+  margin-top: -12px;
 }
 article.page .format-icon:before {
-  content: "\1F4C4";
-  font-size: 3em;
-  line-height: 0px;
-  position: relative;
-  top: 14px;
-}
-/* hack for chrome and safari, uses the browser body.class added with a script */
-.safari article.page .format-icon:before,
-.chrome article.page .format-icon:before {
-  font-family: 'genericons';
-  content: "\f443";
-  font-size: 1.8em;
-  line-height: 0px;
-  position: relative;
-  top: 20px;
+  content: "\f0f6";
 }
 article.format-standard .format-icon:before {
-  font-family: 'genericons';
-  content: "\f411";
-  font-size: 1.5em;
-  top: 12px;
-  line-height: 25px;
+  content: "\f040";
 }
+article.format-image .format-icon:before,
 article.format-gallery .format-icon:before,
 article.attachment .format-icon:before {
-  content: "\1F304";
-  font-size: 3em;
-  line-height: 0px;
-}
-/* hack for safari, uses the browser body.class added with a script */
-.safari article.format-gallery .format-icon:before,
-.safari article.attachment .format-icon:before,
-.chrome article.format-gallery .format-icon:before,
-.chrome article.attachment .format-icon:before {
-  font-family: 'genericons';
-  content: '\f102';
-  font-size: 1.8em;
-  line-height: 0px;
-  top: 15px;
+  content: "\f03e";
 }
 article.format-aside .format-icon:before {
-  content: "\1F504";
-}
-/* hack for safari, uses the browser body.class added with a script */
-.safari article.format-aside .format-icon:before,
-.chrome article.format-aside .format-icon:before {
-  content: '\f308';
-  font-family: 'genericons';
-  font-size: 3.5em;
-  top: -2px;
+  content: "\f08d";
 }
 article.format-chat .format-icon:before {
-  font-family: 'genericons';
-  content: "\f108";
+  content: "\f086";
 }
 article.format-audio .format-icon:before {
-  font-family: 'genericons';
-  content: "\f109";
-  font-size: 1.5em;
-  top: 10px;
+  content: "\f028";
 }
 article.format-video .format-icon:before {
-  content: "\1F3AC";
-  font-size: 3em;
-  line-height: 0px;
-  top: 10px;
-}
-/* hack for safari, uses the browser body.class added with a script */
-.safari article.format-video .format-icon:before,
-.chrome article.format-video .format-icon:before {
-  content: '\f104';
-  font-size: 2em;
-  line-height: 0px;
-  top: 20px;
-  font-family: 'genericons';
+  content: "\f03d";
 }
 article.format-status .format-icon:before {
-  content: "\26A1";
+  content: "\f0e7";
 }
 article.format-quote .format-icon:before,
 article.error404 .format-icon:before {
-  content: "\275E";
-}
-article.format-image .format-icon:before {
-  content: "\1F304";
+  content: "\f10e";
   font-size: 3em;
-  line-height: 0px;
 }
-/* hack for ie */
-.ie article.format-image .format-icon:before {
-  font-size: 0.4em;
-}
-/* hack for safari, uses the browser body.class added with a script */
-.safari article.format-image .format-icon:before,
-.chrome article.format-image .format-icon:before {
-  font-family: 'genericons';
-  content: '\f102';
-  font-size: 1.8em;
-  line-height: 0px;
-  top: 15px;
+/* ie11 hack: In ie11 looks like the above font-size rule makes the overall icon size too big
+as it multiplicates 4em (general rule) and 3em, instead of override the general rule with the one above */
+.ie11 article.format-quote .format-icon:before,
+.ie11 article.error404 .format-icon:before {
+  font-size: .3em;
 }
 article.format-link .format-icon:before {
-  content: "\1F517";
-  top: -12px;
+  content: "\f0c1";
 }
-/* hack for safari + chrome, uses the browser body.class added with a script */
-.safari article.format-link .format-icon:before,
-.chrome article.format-link .format-icon:before {
-  font-family: 'genericons';
-  content: "\f107";
-  top: 7px;
-}
+/* ARCHIVES */
 .search .search-header .format-icon:before {
-  font-family: 'genericons';
-  content: "\f400";
+  content: "\f002";
+  top: -1.9px;
 }
 .archive.date .archive-header .format-icon:before {
-  content: "\E800";
-  top: 3px;
-  font-size: 1.8em;
+  content: "\f187";
 }
 .archive.category .archive-header .format-icon:before {
-  top: 2px;
-  font-size: 2em;
-  content: "\1F4C1";
-}
-/* hack for safari + chrome, uses the browser body.class added with a script */
-.safari.archive.category .archive-header .format-icon:before,
-.chrome.archive.category .archive-header .format-icon:before {
-  font-family: 'genericons';
-  top: 10px;
-  font-size: 1.5em;
-  content: '\f301';
+  content: "\f07c";
 }
 .archive.tag .archive-header .format-icon:before {
-  font-family: 'genericons';
-  content: "\f302";
+  content: "\f02b";
 }
 .archive.author .archive-header .format-icon:before {
-  font-family: 'genericons';
-  content: '\f304';
+  content: '\f007';
 }
 /*--------OTHER ICONS-----------*/
 /*comments*/
 h3#reply-title:before {
-  font-family: 'entypo';
-  content: "\2712";
-  speak: none;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
   padding-right: 5px;
-  font-size: 2em;
+  content: '\f044';
+}
+h2.comments:before {
+  /* GY: added rule to fix icon position */
+  float: left;
 }
 h2.comments-title:before {
-  font-family: 'genericons';
-  content: "\f108";
-  speak: none;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
+  content: '\f086';
+  float: left;
   padding-right: 5px;
-  font-size: 1em;
+}
+/* External Links style */
+a + span.tc-external:after {
+  content: "\f08e";
+  line-height: 0;
+  padding-left: 0;
+  text-decoration: none!important;
+  top: .1em;
+  left: .2em;
+  position: relative;
+}
+.icon-bubble:before {
+  content: "\f075";
 }
 /* HEADER
     -------------------------------------------------- */
@@ -5219,6 +5085,8 @@ body:not(.tc-sticky-header) #tc-reset-margin-top {
 .sticky-enabled .tc-title-logo-off .brand {
   display: none;
 }
+/* do not display menu button when sticky enabled and tc-menu-off enabled */
+.sticky-enabled .tc-header.tc-menu-off .btn-toggle-nav,
 .sticky-enabled .tc-menu-off .nav-collapse {
   display: none;
 }
@@ -5229,10 +5097,10 @@ body:not(.tc-sticky-header) #tc-reset-margin-top {
   margin-left: 0px;
   width: 100%;
 }
-.sticky-enabled .navbar .nav > li > a {
+.sticky-enabled .tc-header .navbar .nav > li > a {
   font-size: 14px;
 }
-.sticky-enabled .navbar .navbar-inner {
+.sticky-enabled .tc-header .navbar .navbar-inner {
   margin: 8px 5px 5px 5px;
   background: none;
   min-height: 35px;
@@ -5241,6 +5109,9 @@ body:not(.tc-sticky-header) #tc-reset-margin-top {
 .sticky-enabled .brand a {
   margin: 10px 0px;
 }
+/*.sticky-enabled .tc-header .btn-toggle-nav .btn {
+  margin: 0 0 3px;
+}*/
 .sticky-enabled .nav-collapse {
   float: right;
 }
@@ -5420,8 +5291,9 @@ h2.site-description {
   border-width: 4px 0 4px 4px;
   border-left-color: #cccccc;
 }
-/* Hide responsive button by default */
-.navbar .btn-navbar {
+/* Hide responsive button by default when menu is regulat type*/
+.tc-regular-menu .navbar .btn-toggle-nav,
+.tc-regular-menu .navbar .btn-navbar {
   display: none;
 }
 .navbar .btn-navbar:hover,
@@ -5430,8 +5302,16 @@ h2.site-description {
 .navbar .btn-navbar.active {
   outline: 0;
 }
-/* MENU
+/* REGULAR MENU
     -------------------------------------------------- */
+.navbar .tc-main-menu-notice {
+  clear: both;
+  padding: 13px 15px 3px;
+  font-size: 17px;
+}
+.sticky-enabled .tc-main-menu-notice {
+  display: none;
+}
 .dropdown-menu {
   border: 0px solid rgba(0, 0, 0, 0.2);
 }
@@ -5504,22 +5384,374 @@ li.dropdown.active > .dropdown-toggle,
   padding-left: 1.63em;
 }
 /* ADJUST LEFT AND RIGHT MENU POSITIONS => align with socials (left) and tagline (right) */
-.navbar div > ul.nav > .menu-item:last-child > a {
+.logo-left .navbar div > ul.nav > .menu-item:last-child > a {
   padding-right: 0px;
 }
 .navbar .nav {
   margin-right: 0px;
 }
-.navbar div > ul.nav > .menu-item:first-child > a {
+.tc-header .btn-toggle-nav.pull-left {
+  clear: both;
+}
+.tc-header .btn-toggle-nav.pull-left,
+.pull-menu-left .navbar div > ul.nav > .menu-item:first-child > a {
   padding-left: 5px;
+}
+.tc-header .btn-toggle-nav.pull-right,
+.pull-menu-right .navbar div > ul.nav > .menu-item:last-child > a {
+  padding-right: 0px;
 }
 .pull-menu-left .nav-collapse {
   float: left;
+  clear: left;
 }
 .pull-menu-right .nav-collapse {
   float: right;
+  clear: right;
 }
-/* BREADCUMB
+/* SIDE MENU
+  -------------------------------------------------- */
+.tc-sn-inner .tc-sidenav-help {
+  clear: both;
+  margin: 10px 0px;
+  position: relative;
+  float: left;
+  padding-bottom: 12px;
+  font-size: 17px;
+}
+/* prevent overflow-x when animating and when menu is visible */
+.tc-sn-visible,
+.animating {
+  overflow-x: hidden;
+}
+#tc-page-wrap {
+  position: relative;
+  z-index: 15;
+  background: inherit;
+}
+[class*=sn-right] #tc-sn {
+  right: 0;
+}
+[class*=sn-left] #tc-sn {
+  left: 0;
+}
+nav#tc-sn {
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  height: 100%;
+  margin: 0;
+  z-index: 10;
+  /* Make sure the z-index is lower than the #page */
+  overflow: hidden;
+}
+#tc-sn .tc-sn-inner {
+  -webkit-transition: height 0s;
+  -moz-transition: height 0s;
+  -o-transition: height 0s;
+  transition: height 0s;
+  position: relative;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: auto;
+  -webkit-overflow-scroll: auto;
+  /* safari */
+  padding: 15px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+}
+/* Animations */
+.animating #tc-page-wrap,
+.animating #tc-sn,
+.tc-sn-visible #tc-page-wrap,
+.tc-sn-visible #tc-sn {
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+/* Hide the menu unless it's animating or visible */
+.animating #tc-sn,
+.tc-sn-visible #tc-sn {
+  visibility: visible;
+}
+.animating #tc-sn,
+.animating #tc-page-wrap {
+  -webkit-transition: -webkit-transform 0.5s;
+  -moz-transition: -moz-transform 0.5s;
+  -o-transition: -o-transform 0.5s;
+  transition: transform 0.5s;
+}
+.sn-right.sn-close #tc-sn,
+.sn-right #tc-sn {
+  -webkit-transform: translate3d(50%, 0, 0);
+  -moz-transform: translate3d(50%, 0, 0);
+  transform: translate3d(50%, 0, 0);
+}
+.sn-left.sn-close #tc-sn,
+.sn-left #tc-sn {
+  -webkit-transform: translate3d(-50%, 0, 0);
+  -moz-transform: translate3d(-50%, 0, 0);
+  transform: translate3d(-50%, 0, 0);
+}
+/* hide inner scrollbars (if any) while animating */
+.animating #tc-sn .tc-sn-inner {
+  overflow: hidden !important;
+}
+.animating #tc-sn,
+.tc-sn-visible #tc-sn {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+/* FIXED HEADER ISSUE */
+.animating.tc-sticky-header #tc-page-wrap {
+  overflow: auto;
+}
+.tc-sticky-header[class*=sn-] .tc-header {
+  -webkit-transition: top 0s;
+  -moz-transition: top 0s;
+  -o-transition: top 0s;
+  transition: top 0s;
+}
+.animating.sticky-enabled.tc-sticky-header .tc-header {
+  opacity: 0;
+}
+/* HACK */
+/* stick the sticky header to the left/right of the page wrapper*/
+/* following needed both in mobiles with max-width 400px and in the safari version I tried 6.1.5, since looks fine also in other desktop I left it as general rule*/
+/* basically on transition's end in those browsers the sticky header moved to left 0 (or right 0) of the window, overlapping the side menu
+style when side nav visible is actually rendered inline TC_menu.tc_set_sidenav_style
+*/
+.tc-sticky-header[class*=sn-left] .tc-header {
+  left: 0;
+}
+.tc-sticky-header[class*=sn-right] .tc-header {
+  right: 0;
+}
+/* see inline style for further fixes */
+/* END FIXED HEADER ISSUE */
+/* SIDE MENU START */
+/*.btn-toggle-nav .menu-btn,*/
+#tc-sn .nav-collapse {
+  background: #fff;
+  background: rgba(255, 255, 255, 0.9);
+  filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#CCFFFFFF, endColorstr=#CCFFFFFF)";
+}
+.btn-toggle-nav .menu-btn:focus,
+.btn-toggle-nav .menu-btn:hover {
+  outline: none;
+  outline-offset: inherit;
+  background: none;
+}
+#tc-sn .tc-sn-inner.nav-collapse .nav {
+  display: block;
+  width: 98%;
+}
+.sn-nav-wrapper {
+  clear: both;
+  float: left;
+  min-width: 100%;
+}
+#tc-sn .tc-sn-inner .nav li {
+  float: none;
+}
+#tc-sn .nav a {
+  border-bottom: 1px solid #EEE;
+}
+#tc-sn .tc-sn-inner .nav > li > a {
+  padding: 5px 20px 5px 0px;
+}
+/* hide arrow */
+#tc-sn.navbar .nav .dropdown-submenu > a:after,
+#tc-sn.navbar .nav > li > .dropdown-menu:after,
+#tc-sn.navbar .nav > li > .dropdown-menu:before {
+  content: none;
+}
+#tc-sn .tc-sn-inner .nav li.dropdown .caret {
+  display: none;
+}
+.tc-sn-inner .nav [class*=dropdown] {
+  position: static;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  display: none;
+}
+/*force font color of the 2nd level for all viewports? change this in customizr? */
+.nav .dropdown-menu a {
+  color: #777;
+}
+.navbar div > ul.sn-nav > .menu-item:first-child > a {
+  padding-left: 20px;
+}
+#tc-sn .tc-sn-inner .nav .dropdown-menu {
+  left: auto;
+  float: none;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  opacity: 1;
+  top: 100%;
+}
+#tc-sn .nav-collapse .nav .dropdown-menu a {
+  padding: 3px 5px;
+  white-space: normal;
+}
+#tc-sn.navbar .nav-collapse ul.nav > li li a {
+  font-size: 90%;
+  padding-left: 25px;
+}
+#tc-sn.navbar .nav-collapse ul.nav > li li li a {
+  padding-left: 50px;
+}
+.animating .tc-sn-inner .nav [class*=dropdown],
+.tc-sn-visible .tc-sn-inner .nav [class*=dropdown] {
+  display: block;
+}
+/* SIDE MENU END */
+/* SIDE/MOBILE NAV TOGGLE BUTTON */
+/*.sn-open .tc-header .btn-toggle-nav ,
+.tc-sn-visible .tc-header .btn-toggle-nav {
+  visibility: hidden;
+}*/
+.btn-toggle-nav {
+  width: auto;
+  line-height: 29px;
+  margin-top: 5px;
+}
+/* Adjustment when tagline off */
+.sticky-enabled .tc-tagline-off .btn-toggle-nav {
+  margin-top: 8px;
+}
+.navbar .btn-toggle-nav .btn {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  /*padding: 8px 7px 2px;
+  border: 1px solid #EEE;*/
+  height: 30px;
+  color: #5F6F81;
+  text-decoration: none;
+  cursor: pointer;
+  margin: 1px 5px 0px;
+  outline: 0;
+  float: left;
+}
+.sn-toggle .btn {
+  display: block;
+}
+/* Adapt close button position according to the user setting */
+[class*=sn-left] .tc-sn .btn-toggle-nav {
+  float: right;
+}
+[class*=sn-right] .tc-sn .btn-toggle-nav {
+  float: left;
+}
+.tc-sn .btn-toggle-nav {
+  margin-bottom: 10px;
+}
+/* fix visibility bug on close */
+.sn-close .tc-sn .btn-toggle-nav {
+  visibility: hidden;
+}
+.menu-btn {
+  padding: 0;
+  background: none;
+  border: none;
+}
+.menu-label {
+  text-align: center;
+  margin: auto;
+  display: block;
+  float: right;
+  display: inline-block;
+  margin-right: 5px;
+  cursor: pointer;
+}
+.navbar .btn-toggle-nav .icon-bar {
+  background: #5F6F81;
+  display: block;
+  width: 30px;
+  height: 3px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+.navbar .btn-toggle-nav .icon-bar,
+.navbar .btn-toggle-nav .menu-label {
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+/* Prevent icons staying highlighted in mobiles even when menu closed */
+.tc-is-mobile .navbar .nav-collapse + .btn-toggle-nav .icon-bar {
+  background-color: #5f6f81;
+}
+/* Tanform 3 bars in a cross */
+.nav-collapse.in + .btn-toggle-nav .icon-bar:nth-child(1),
+.tc-sn-visible .btn-toggle-nav .icon-bar:nth-child(1) {
+  -webkit-transform: translate(0px, 0px) rotate(-45deg) scalex(1.3);
+  -moz-transform: translate(0px, 0px) rotate(-45deg) scalex(1.3);
+  -ms-transform: translate(0px, 0px) rotate(-45deg) scalex(1.3);
+  -o-transform: translate(0px, 0px) rotate(-45deg) scalex(1.3);
+  transform: translate(0px, 0px) rotate(-45deg) scalex(1.3);
+}
+.nav-collapse.in + .btn-toggle-nav .icon-bar:nth-child(2),
+.tc-sn-visible .btn-toggle-nav .icon-bar:nth-child(2) {
+  height: 0;
+  -webkit-transition: all .05s linear;
+  -moz-transition: all .05s linear;
+  -o-transition: all .05s linear;
+  transition: all .05s linear;
+}
+.nav-collapse.in + .btn-toggle-nav .icon-bar:nth-child(3),
+.tc-sn-visible .btn-toggle-nav .icon-bar:nth-child(3) {
+  -webkit-transform: translate(0px, -3px) rotate(45deg) scalex(1.3);
+  -moz-transform: translate(0px, -3px) rotate(45deg) scalex(1.3);
+  -ms-transform: translate(0px, -3px) rotate(45deg) scalex(1.3);
+  -o-transform: translate(0px, -3px) rotate(45deg) scalex(1.3);
+  transform: translate(0px, -3px) rotate(45deg) scalex(1.3);
+}
+.csstransforms .nav-collapse.in + .btn-toggle-nav .icon-bar,
+.csstransforms .tc-sn-visible .btn-toggle-nav .icon-bar {
+  margin: 0;
+}
+/* SECONDARY MENU
+  -------------------------------------------------- */
+.secondary-menu-separator hr:after {
+  content: '';
+  border: 2px dashed #B3B3B3;
+  display: block;
+}
+.secondary-menu-separator hr {
+  border-bottom: 1px solid #EEE;
+  border-top: none;
+  margin: 30px 0 0;
+  padding-bottom: 30px;
+}
+.navbar .tc-menu-placeholder {
+  float: left;
+  width: 86%;
+  margin-left: 10px;
+  clear: left;
+  padding: 9px 3% 0;
+  font-size: 17px;
+}
+.sticky-enabled .tc-menu-placeholder {
+  display: none;
+}
+/* BREADCRUMB
   -------------------------------------------------- */
 .tc-hot-crumble {
   margin: 5px 0 10px 0;
@@ -5599,12 +5831,12 @@ li.dropdown.active > .dropdown-toggle,
 .widget li.on:before {
   left: -7px;
 }
-#main-wrapper .widget li {
+.tc-sidebar .widget li {
   line-height: 25px;
   border-bottom: 1px solid #EEE;
   position: relative;
 }
-#main-wrapper .widget li:after {
+.tc-sidebar .widget li:after {
   content: "";
   border-bottom: 1px solid #FFF;
   position: absolute;
@@ -5612,12 +5844,12 @@ li.dropdown.active > .dropdown-toggle,
   right: 0px;
   bottom: -2px;
 }
-#main-wrapper .widget li:hover,
+.tc-sidebar .widget li:hover,
 .widget li:focus {
   text-decoration: none;
   background-color: #EEE;
 }
-#main-wrapper .widget li a {
+.tc-sidebar .widget li a {
   text-shadow: 0 1px 0 #FFF;
 }
 /* NO WIDGETS ICONS */
@@ -5656,13 +5888,31 @@ li.dropdown.active > .dropdown-toggle,
   position: relative;
   top: 2px;
 }
+footer#footer .colophon .credits a[class*=icon-],
 footer#footer .colophon .social-block a {
   color: #5A5A5A;
   text-shadow: 0 0px 0 #ffffff;
   font-size: 1.1em;
 }
+footer#footer .colophon .credits a[class*=icon-] {
+  vertical-align: inherit;
+  position: relative;
+}
+.social-block a:focus,
+.social-block a:active {
+  text-decoration: none;
+}
 /* SLIDER
     -------------------------------------------------- */
+.customizr-slide .tc-slider-notice {
+  position: absolute;
+  right: 30px;
+  z-index: 50;
+  bottom: 0px;
+  padding: 18px 14px 3px;
+  font-size: 17px;
+  width: 50%;
+}
 /* Carousel base class */
 .carousel {
   margin-bottom: 0px;
@@ -5682,7 +5932,7 @@ footer#footer .colophon .social-block a {
   font-size: 120px;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
   z-index: 10;
-  color: #999;
+  color: inherit;
   line-height: 16px;
   vertical-align: middle;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -5696,6 +5946,9 @@ footer#footer .colophon .social-block a {
   filter: alpha(opacity=90);
   outline: none;
 }
+.tc-carousel-control:focus {
+  color: inherit;
+}
 .tc-slider-controls {
   position: absolute;
   bottom: 0;
@@ -5705,6 +5958,9 @@ footer#footer .colophon .social-block a {
   /* OVERRIDEN BY DYNAMIC!!!! PHP + JS */
   width: 10%;
   opacity: 0;
+  color: #999;
+  z-index: 10\9;
+  /* controls visible and clickable in IE 9 and below */
 }
 .tc-slid-hover .tc-slider-controls {
   opacity: 1;
@@ -5738,6 +5994,7 @@ footer#footer .colophon .social-block a {
   line-height: 500px;
   overflow: hidden;
   min-height: 500px;
+  max-height: 500px;
 }
 .carousel .item > span {
   *zoom: 1;
@@ -5766,7 +6023,7 @@ footer#footer .colophon .social-block a {
 .carousel-caption {
   background-color: transparent\9;
   /* IE8 and below */
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.2);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#33000000', endColorstr='#33000000', GradientType=0);
   /* IE6-9 */
   max-width: 60%;
@@ -5785,15 +6042,20 @@ footer#footer .colophon .social-block a {
   margin: 0;
   line-height: 1.25;
   color: white;
-  text-shadow: 0 2px 2px rgba(0, 0, 0, 1);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
 }
 .carousel-caption .btn {
   margin-top: 10px;
 }
-.slider.edit-link 
+.slider.edit-link {
   position: absolute;
   bottom: 40px;
   right: 11%;
+}
+.slider.deep-edit-link.edit-link {
+  right: auto;
+  left: 11%;
+  bottom: 20px;
 }
 /* If automatic centering is enabled */
 .carousel > .center-slides-enabled > .item > .carousel-image img {
@@ -5802,20 +6064,91 @@ footer#footer .colophon .social-block a {
 }
 /* Gif Loader if center slide option is checked */
 .tc-slider-loader-wrapper {
-  height: 500px;
+  height: 100%;
   width: 100%;
-  line-height: 500px;
   position: absolute;
-  z-index: 1000;
-  text-align: center;
+  z-index: 99;
+  /*less than the default sticky-header z-index */
   background: #FAFAFA;
 }
 .tc-img-gif-loader {
-  line-height: 15px;
-  vertical-align: middle;
   width: 100%;
   display: inline-block;
-  position: relative;
+  height: 100%;
+}
+/* Pure CSS loader */
+@-webkit-keyframes tc-mr-loader {
+  0% {
+    -webkit-transform: scale(0.1);
+    transform: scale(0.1);
+    opacity: 1;
+  }
+  70% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0.0;
+  }
+}
+@keyframes tc-mr-loader {
+  0% {
+    -webkit-transform: scale(0.1);
+    transform: scale(0.1);
+    opacity: 1;
+  }
+  70% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0.0;
+  }
+}
+.tc-css-loader {
+  display: none;
+}
+.csstransforms3d .tc-css-loader {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+  -ms-transform: translate3d(-50%, -50%, 0);
+  transform: translate3d(-50%, -50%, 0);
+  top: 50%;
+  left: 50%;
+  display: block;
+}
+.tc-mr-loader > div:nth-child(0) {
+  -webkit-animation-delay: -0.8s;
+  animation-delay: -0.8s;
+}
+.tc-mr-loader > div:nth-child(1) {
+  -webkit-animation-delay: -0.6s;
+  animation-delay: -0.6s;
+}
+.tc-mr-loader > div:nth-child(2) {
+  -webkit-animation-delay: -0.4s;
+  animation-delay: -0.4s;
+}
+.tc-mr-loader > div:nth-child(3) {
+  -webkit-animation-delay: -0.2s;
+  animation-delay: -0.2s;
+}
+.tc-mr-loader > div {
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  position: absolute;
+  top: -4%;
+  left: -4%;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  border: 2px solid #777;
+  -webkit-animation: tc-mr-loader 1.25s 0s infinite cubic-bezier(0.21, 0.53, 0.56, 0.8);
+  animation: tc-mr-loader 1.25s 0s infinite cubic-bezier(0.21, 0.53, 0.56, 0.8);
 }
 /* CUSTOM SLIDER HEIGHT */
 .custom-slider-height .carousel-inner .item {
@@ -5823,6 +6156,13 @@ footer#footer .colophon .social-block a {
 }
 /* FEATURED PAGES
     -------------------------------------------------- */
+.marketing .tc-fp-notice {
+  float: right;
+  padding: 18px 14px 3px;
+  font-size: 17px;
+  width: 50%;
+  margin-top: 20px;
+}
 /* Center align the text within the three columns below the carousel */
 .marketing {
   margin-top: 20px;
@@ -5951,6 +6291,9 @@ article.hover .tc-thumbnail .round-div {
 }
 /* POST STUFF
     -------------------------------------------------- */
+.article-container .tc-thumbnail-help {
+  font-size: 17px;
+}
 #main-wrapper {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -5969,6 +6312,10 @@ article.hover .tc-thumbnail .round-div {
 h1.entry-title,
 h2.entry-title {
   width: 100%;
+}
+/* woocommerce product titles */
+.woocommerce div.product .product_title {
+  text-align: left;
 }
 h1 a:hover,
 h2 a:hover {
@@ -6251,28 +6598,19 @@ video {
 }
 /* SIDEBARS STUFF
       -------------------------------------------------- */
-.tc-widget-placeholder {
-  padding: 19px;
-  background-color: #F5F5F5;
-  border: 1px solid #E3E3E3;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
-  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
-  box-shadow: inset 0 1px 10px rgba(0, 0, 0, 0.2);
-  position: relative;
-}
-.tc-sidebar .tc-widget-placeholder {
+.tc-sidebar .tc-placeholder-wrap {
   margin-top: 15px;
 }
-.tc-widget-placeholder p {
+.tc-placeholder-wrap p {
   font-style: italic;
   font-size: 80%;
   color: #5A5A5A!important;
 }
-#footer .tc-widget-placeholder h4 {
+#footer .tc-placeholder-wrap h4 {
   color: #5A5A5A;
 }
-#footer .tc-widget-placeholder a,
-.tc-sidebar .tc-widget-placeholder a {
+#footer .tc-placeholder-wrap a,
+.tc-sidebar .tc-placeholder-wrap a {
   color: #5A5A5A;
   text-decoration: underline;
 }
@@ -6289,15 +6627,9 @@ video {
   right: 6px;
 }
 .tc-admin-notice:before {
-  content: '\f427';
-  font-family: 'genericons';
-  font-size: 21px;
-  position: relative;
-  display: inline-block;
-  top: 5px;
+  content: '\f084';
+  font-size: 15px;
   padding-right: 3px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 /* POST THUMBNAILS
       -------------------------------------------------- */
@@ -6453,10 +6785,14 @@ img.v-centered {
   background: rgba(0, 0, 0, 0.4);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#33000000', endColorstr='#33000000', GradientType=0);
 }
-.no-thumb figcaption {
+article .no-thumb figcaption {
   color: inherit;
   background: none;
   opacity: 1;
+}
+.expanded .no-thumb figcaption {
+  color: #fff;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 }
 .expanded figcaption,
 .no-thumb figcaption,
@@ -6501,6 +6837,7 @@ img.v-centered {
 .tc-post-list-grid article.expanded .entry-summary {
   background: #fafafa;
   background: rgba(0, 0, 0, 0.4);
+  background: grey\9;
   padding: 8%;
   margin: 0;
   max-height: none;
@@ -6513,6 +6850,17 @@ img.v-centered {
 .tc-post-list-grid .expanded .entry-title a {
   color: #fff;
 }
+/* Edit link for the expanded post and for the grid-customizer */
+.tc-grid-figure .edit-link {
+  position: absolute;
+  z-index: 20;
+  bottom: 1px;
+  left: 1px;
+  padding: 0 2px;
+  font-size: 11px;
+  line-height: 15px;
+  text-transform: none;
+}
 /* HOVER */
 .tc-post-list-grid .hover:not(.expanded) figcaption,
 .tc-post-list-grid .expanded.hover .entry-summary {
@@ -6523,11 +6871,20 @@ img.v-centered {
 .hover .tc-grid-figure img {
   opacity: 0.7;
 }
-.hover .expanded figcaption,
+/*.hover figcaption {
+  background: rgb(250, 250, 250);
+  background: rgba(0,0,0,.6);
+  color: #fff;
+  /*color: inherit\9!important;
+}*/
+.hover.expanded .no-thumb figcaption {
+  background: none;
+}
 .hover .no-thumb figcaption {
+  color: #fff;
   background: #fafafa;
   background: rgba(0, 0, 0, 0.6);
-  color: #fff;
+  background: #676767\9;
 }
 .tc-post-list-grid article.sticky {
   text-align: justify;
@@ -6593,14 +6950,12 @@ img.v-centered {
 /* Grid icons */
 .tc-grid-icon {
   text-align: center;
-  position: relative;
   position: absolute;
   z-index: 1;
   width: 100%;
-}
-.format-quote .tc-grid-icon,
-.format-status .tc-grid-icon {
-  top: -15%;
+  left: 0;
+  top: 0;
+  display: none!important\9;
 }
 .tc-post-list-grid article .tc-grid-icon:before {
   font-size: 90px;
@@ -6610,24 +6965,8 @@ img.v-centered {
   top: inherit!important;
   padding-right: 0;
 }
-.tc-post-list-grid article.format-quote .tc-grid-icon:before,
-.tc-post-list-grid article.format-status .tc-grid-icon:before {
-  font-size: 138px;
-}
-.tc-b-sidebar .tc-post-list-grid article .tc-grid-icon:before,
-.tc-b-sidebar .tc-post-list-grid article.format-quote .tc-grid-icon:before,
-.tc-b-sidebar .tc-post-list-grid article.format-status .tc-grid-icon:before {
+.tc-b-sidebar .tc-post-list-grid article[class*=format] .tc-grid-icon:before {
   font-size: 60px;
-}
-.tc-post-list-grid .grid-cols-3 article .tc-grid-icon:before,
-.tc-post-list-grid .grid-cols-4 article .tc-grid-icon:before {
-  font-size: 60px;
-}
-.grid-cols-3 article.format-status .tc-grid-icon:before,
-.grid-cols-4 article.format-quote .tc-grid-icon:before,
-.grid-cols-4 article.format-status .tc-grid-icon:before,
-.grid-cols-4 article.format-quote .tc-grid-icon:before {
-  font-size: 100px!important;
 }
 .tc-grid-post .no-thumb .format-icon:before {
   opacity: 0.2;
@@ -6677,7 +7016,28 @@ img.v-centered {
 .woocommerce .thumbnails {
   margin-left: 0;
 }
-/* WP CSS
+/*
+PLACEHOLDERS / DISMISS NOTICES
+    -------------------------------------------------- */
+.tc-placeholder-wrap {
+  padding: 19px;
+  background-color: #F5F5F5;
+  border: 1px solid #E3E3E3;
+  -webkit-box-shadow: inset 0 0px 10px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: inset 0 0px 10px rgba(0, 0, 0, 0.6);
+  box-shadow: inset 0 0px 10px rgba(0, 0, 0, 0.6);
+  position: relative;
+}
+.tc-placeholder-wrap::before {
+  font-size: 1em;
+  content: "\f05a";
+  padding-left: 0;
+  position: absolute;
+  text-decoration: none!important;
+  top: 5px;
+  left: 5px;
+}
+/* WP SPECIFICS
     -------------------------------------------------- */
 .wp-caption {
   max-width: 100%;
@@ -6692,6 +7052,34 @@ img.v-centered {
   font-size: 0.7rem;
   line-height: 1.3em;
   color: #757575;
+}
+/* Text meant only for screen readers. */
+.screen-reader-text {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+.screen-reader-text:focus {
+  background-color: #f1f1f1;
+  border-radius: 3px;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+  clip: auto !important;
+  color: #21759b;
+  display: block;
+  font-size: 14px;
+  font-size: 0.875rem;
+  font-weight: bold;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000;
+  /* Above WP toolbar. */
 }
 .tc-gallery-style .gallery-item img {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
@@ -6794,8 +7182,8 @@ ul.children {
   display: block;
 }
 .comment .edit-link {
-  display: block;
   float: right;
+  display: block;
   margin-right: 10px;
 }
 .comment-avatar {
@@ -6840,7 +7228,7 @@ img.aligncenter {
   margin-bottom: 0.857142857rem;
 }
 /* OTHER CUSTOMIZED WP CSS */
-#calendar_wrap table {
+.calendar_wrap table {
   width: 100%;
   border-color: #e1e1e1;
   padding: 0;
@@ -6851,10 +7239,13 @@ img.aligncenter {
   border-collapse: collapse;
   border-spacing: 0;
 }
-#footer #calendar_wrap table {
+#footer .calendar_wrap table {
   color: #5a5a5a;
 }
-#footer #calendar_wrap table caption {
+footer#footer .calendar_wrap table a {
+  font-size: inherit;
+}
+#footer .calendar_wrap table caption {
   color: #EEE;
 }
 table caption {
@@ -6932,6 +7323,10 @@ footer#footer .colophon a,
 footer#footer .colophon p {
   color: #5a5a5a;
 }
+footer#footer .colophon .credits span[class*=text],
+footer#footer .colophon .credits a {
+  display: inline-block;
+}
 footer .widget_recent_entries li:after {
   border-bottom: none;
 }
@@ -6958,6 +7353,8 @@ footer ol {
   z-index: 99999999;
   background: #777777 transparent;
   background: rgba(119, 119, 119, 0.2);
+  background: white\9;
+  border: 1px solid #ddd\9;
   color: #EEE;
   width: 45px;
   height: 43px;
@@ -6979,54 +7376,22 @@ footer ol {
   line-height: inherit;
 }
 .btt-arrow {
-  display: inline-block;
-  font-family: 'genericons';
   font-size: 2em;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 .btt-arrow:before {
-  content: "\f432";
+  content: "\f106";
   text-shadow: 0px 1px 0 #FFF;
+  top: -0.06em;
 }
 /* ADMIN BAR
     -------------------------------------------------- */
 #wpadminbar #wp-admin-bar-tc-customizr-help .ab-item:before,
 li#wp-admin-bar-tc-customizr-help a:before {
-  font-family: 'entypo';
-  content: "\E788";
+  content: "\f1cd";
   color: #FFF;
-  speak: none;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
   padding-right: 0px;
-  top: 5px;
-  font-size: 30px;
+  top: 2px;
   position: relative;
-  line-height: 0px;
-}
-#wpadminbar #wp-admin-bar-tc-customizr .ab-item:before,
-li#wp-admin-bar-tc-customizr a:before {
-  font-family: 'entypo';
-  content: "\E79A";
-  color: #FFF;
-  speak: none;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  padding-right: 0px;
-  top: 4px;
-  font-size: 30px;
-  position: relative;
-  line-height: 0px;
 }
 li#wp-admin-bar-tc-customizr-help a {
   color: #FFF;
@@ -7062,45 +7427,6 @@ li#wp-admin-bar-tc-customizr-help a {
   /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1B8D71', endColorstr='#27CDA5', GradientType=0);
   /* IE6-9 */
-}
-li#wp-admin-bar-tc-customizr a {
-  background-color: #21759B;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#2a95c5), to(#21759b));
-  background-image: -webkit-linear-gradient(top, #2a95c5, #21759b);
-  background-image: -moz-linear-gradient(top, #2a95c5, #21759b);
-  background-image: -ms-linear-gradient(top, #2a95c5, #21759b);
-  background-image: -o-linear-gradient(top, #2a95c5, #21759b);
-  background-image: linear-gradient(to bottom, #2a95c5, #21759b);
-  border-color: #21759B;
-  border-bottom-color: #1E6A8D;
-  -webkit-box-shadow: inset 0 1px 0 rgba(120, 200, 230, 0.5);
-  box-shadow: inset 0 1px 0 rgba(120, 200, 230, 0.5);
-  color: #FFF;
-  text-decoration: none;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-}
-#wpadminbar .ab-top-menu > li#wp-admin-bar-tc-customizr:hover > .ab-item {
-  background: #21759b;
-  /* Old browsers */
-  background: -moz-linear-gradient(top, #21759b 0%, #2e9fd2 100%, #27cda5 100%, #2e9fd2 100%);
-  /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #21759b), color-stop(100%, #2e9fd2), color-stop(100%, #27cda5), color-stop(100%, #2e9fd2));
-  /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, #21759b 0%, #2e9fd2 100%, #27cda5 100%, #2e9fd2 100%);
-  /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, #21759b 0%, #2e9fd2 100%, #27cda5 100%, #2e9fd2 100%);
-  /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, #21759b 0%, #2e9fd2 100%, #27cda5 100%, #2e9fd2 100%);
-  /* IE10+ */
-  background: linear-gradient(to bottom, #21759b 0%, #2e9fd2 100%, #27cda5 100%, #2e9fd2 100%);
-  /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#21759b', endColorstr='#2e9fd2', GradientType=0);
-  /* IE6-9 */
-  border-color: #1B607F;
-  -webkit-box-shadow: inset 0 1px 0 rgba(120, 200, 230, 0.6);
-  box-shadow: inset 0 1px 0 rgba(120, 200, 230, 0.6);
-  color: #FFF;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
 }
 /* MEDIA PRINT
     -------------------------------------------------- */
@@ -7306,9 +7632,11 @@ li#wp-admin-bar-tc-customizr a {
     float: left;
     margin-left: 2.56410256%;
     *margin-left: 2.51091107%;
+    margin-right: 0;
   }
   .row-fluid [class*="span"]:first-child {
     margin-left: 0;
+    margin-right: 0;
   }
   .row-fluid .controls-row [class*="span"] + [class*="span"] {
     margin-left: 2.56410256%;
@@ -7655,9 +7983,11 @@ li#wp-admin-bar-tc-customizr a {
     float: left;
     margin-left: 2.76243094%;
     *margin-left: 2.70923945%;
+    margin-right: 0;
   }
   .row-fluid [class*="span"]:first-child {
     margin-left: 0;
+    margin-right: 0;
   }
   .row-fluid .controls-row [class*="span"] + [class*="span"] {
     margin-left: 2.76243094%;
@@ -8300,7 +8630,7 @@ li#wp-admin-bar-tc-customizr a {
     padding-right: 10px;
   }
 }
-@media (min-width: 979px + 1) {
+@media (min-width: 980px) {
   .nav-collapse.collapse {
     height: auto !important;
     overflow: visible !important;
@@ -8343,6 +8673,7 @@ li#wp-admin-bar-tc-customizr a {
     line-height: 385px;
     overflow: hidden;
     min-height: 385px;
+    max-height: 385px;
   }
   #left .round-div {
     left: -77px;
@@ -8408,6 +8739,11 @@ li#wp-admin-bar-tc-customizr a {
   .tc-open-on-click .dropdown-submenu:hover > .dropdown-menu {
     display: none;
   }
+  /* Side Nav */
+  .tc-sn-inner.nav-collapse.collapse {
+    height: 100% !important;
+    overflow: auto !important;
+  }
 }
 @media (max-width: 979px) {
   .tc-header .outside {
@@ -8418,6 +8754,7 @@ li#wp-admin-bar-tc-customizr a {
     float: none;
     text-align: center;
     width: 100%;
+    clear: both;
   }
   .container.navbar-wrapper {
     margin-bottom: 0;
@@ -8451,12 +8788,10 @@ li#wp-admin-bar-tc-customizr a {
   /* Default Menu */
   .nav-collapse,
   .nav-collapse.collapse {
-    overflow: hidden;
-    height: 0;
     position: absolute;
     z-index: 3000;
     right: 0px;
-    top: 42px;
+    top: 52px;
     background-color: #FAFAFA;
     background-image: -moz-linear-gradient(top, #ffffff, #f2f2f2);
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f2f2f2));
@@ -8487,6 +8822,9 @@ li#wp-admin-bar-tc-customizr a {
   .nav-collapse.collapse.in .nav {
     display: block;
   }
+  .tc-header:not(.tc-second-menu-on) .navbar div > ul.nav > .menu-item:first-child > a {
+    padding-left: 15px;
+  }
   .nav-collapse .nav > li > a,
   .nav-collapse .dropdown-menu a {
     font-weight: normal;
@@ -8506,10 +8844,7 @@ li#wp-admin-bar-tc-customizr a {
     padding-left: 25px;
   }
   .nav-collapse .dropdown-menu li li a {
-    padding-left: 50px;
-  }
-  .nav-collapse .dropdown-menu li li li a {
-    padding-left: 75px;
+    padding-left: 30px;
   }
   /* Hover Menu */
   .nav-collapse.tc-hover-menu-wrapper {
@@ -8522,7 +8857,7 @@ li#wp-admin-bar-tc-customizr a {
     text-align: left;
     position: relative;
   }
-  .tc-hover-menu.nav a:after {
+  .tc-header:not(.tc-second-menu-on) .tc-hover-menu.nav a:after {
     border-top: none;
     border-right: none;
     border-left: none;
@@ -8531,6 +8866,11 @@ li#wp-admin-bar-tc-customizr a {
     border-bottom: 1px solid #EEE;
   }
   .tc-hover-menu.nav .caret {
+    display: none;
+  }
+  /* second menu placeholder */
+  .navbar .tc-menu-placeholder,
+  .navbar .tc-main-menu-notice {
     display: none;
   }
   /* social blocks */
@@ -8544,6 +8884,7 @@ li#wp-admin-bar-tc-customizr a {
     line-height: 309px;
     overflow: hidden;
     min-height: 309px;
+    max-height: 309px;
   }
   .featurette {
     height: auto;
@@ -8651,18 +8992,16 @@ li#wp-admin-bar-tc-customizr a {
   .sticky-enabled .navbar .navbar-inner {
     margin: 0px;
   }
+  .tc-header .navbar .btn-toggle-nav,
   .navbar .btn-navbar {
     display: block;
     margin: 10px 0;
+    /*float: right;*/
   }
   /* GIVE NAVBAR A SMALLER Z-index than logo / title SINCE V3.2.0*/
   .sticky-enabled .navbar-wrapper {
     position: relative;
     z-index: 1;
-  }
-  /* do not display menu button when sticky enabled and tc-menu-off enabled */
-  .sticky-enabled .tc-menu-off .btn-navbar {
-    display: none;
   }
   .no-navbar .nav-collapse,
   .nav-collapse.collapse {
@@ -8686,6 +9025,9 @@ li#wp-admin-bar-tc-customizr a {
     float: left;
     margin: 14px 0 0;
   }
+  .logo-right .navbar .navbar-inner .social-block {
+    float: right;
+  }
   /* MENU CHANGES SINCE V3.2.0 */
   .navbar .nav-collapse .dropdown-menu a {
     padding: 3px 5px;
@@ -8694,7 +9036,7 @@ li#wp-admin-bar-tc-customizr a {
     padding-left: 30px;
   }
   .navbar .nav-collapse ul.nav > li li li a {
-    padding-left: 60px;
+    padding-left: 50px;
   }
   .dropdown-submenu > a:after {
     content: none;
@@ -8733,8 +9075,11 @@ li#wp-admin-bar-tc-customizr a {
   .simple-button .navbar .btn-navbar:hover .icon-bar {
     background-color: #fff;
   }
-  button.btn.btn-navbar {
+  /*  button.btn.btn-navbar {
     transition: all 0.1s ease-in-out;
+  }*/
+  .btn-toggle-nav .menu-label {
+    display: none;
   }
 }
 @media (max-width: 979px) and (min-width: 768px) {
@@ -8806,6 +9151,10 @@ li#wp-admin-bar-tc-customizr a {
   #right.widget-area:before {
     border-left: 0px;
   }
+  .tc-no-sticky-header .navbar-wrapper,
+  .sticky-disabled .navbar-wrapper {
+    clear: both;
+  }
   .navbar-inner {
     margin: -20px;
   }
@@ -8817,6 +9166,7 @@ li#wp-admin-bar-tc-customizr a {
     line-height: 308px;
     overflow: hidden;
     min-height: 308px;
+    max-height: 308px;
   }
   .item .carousel-caption h1 {
     font-size: 22px;
@@ -8926,6 +9276,7 @@ li#wp-admin-bar-tc-customizr a {
     line-height: 190px;
     overflow: hidden;
     min-height: 190px;
+    max-height: 190px;
   }
   .carousel-caption {
     padding: 2%;
@@ -8974,11 +9325,40 @@ li#wp-admin-bar-tc-customizr a {
     overflow: hidden;
   }
 }
+/* Side Nav */
+@media (max-width: 400px) {
+  nav#tc-sn {
+    width: 400px;
+    max-width: 100%;
+  }
+  #tc-sn .nav-collapse {
+    background: #fff;
+  }
+  /* when open, give to the menu a greater z-index
+   */
+  .tc-sn-visible:not(.sn-close) #tc-sn {
+    z-index: 9999;
+  }
+  .tc-sn-visible {
+    overflow: hidden;
+  }
+  /* Hack*/
+  /* prevent pan in mobiles max-width: 400px: should we apply this for all tc-is-mobile losing the page scroll down ?? */
+  .tc-sn-visible #tc-page-wrap {
+    position: absolute;
+    width: 100%;
+  }
+  .tc-sn-visible:not(.sn-close) #tc-page-wrap {
+    left: initial !important;
+  }
+  /*end prevent overflows in mobiles */
+}
 @media (max-width: 320px) {
   .carousel .item {
     line-height: 140px;
     overflow: hidden;
     min-height: 140px;
+    max-height: 140px;
   }
   .carousel-caption {
     padding: 2%;

@@ -22,7 +22,7 @@ function esteem_widgets_init() {
 		'after_widget'  	=> '</aside>',
 		'before_title'  	=> '<h3 class="widget-title"><span>',
 		'after_title'   	=> '</span></h3>'
-	) );	
+	) );
 
 	// Registering main left sidebar
 	register_sidebar( array(
@@ -100,14 +100,14 @@ function esteem_widgets_init() {
 
 /**
  * Widget for business layout that shows selected page content,title and corresponding icon.
- * Construct the widget. 
+ * Construct the widget.
  * i.e. Name, description and control options.
  */
 class esteem_service_widget extends WP_Widget {
- 	function esteem_service_widget() {
+ 	function __construct() {
  		$widget_ops = array( 'classname' => 'widget-services', 'description' => __( 'Display Services( Business Layout )', 'esteem' ) );
-		$control_ops = array( 'width' => 200, 'height' =>250 ); 
-		parent::WP_Widget( false, $name = __( 'TG: Services', 'esteem' ), $widget_ops, $control_ops);
+		$control_ops = array( 'width' => 200, 'height' =>250 );
+		parent::__construct( false, $name = __( 'TG: Services', 'esteem' ), $widget_ops, $control_ops);
  	}
 
  	function form( $instance ) {
@@ -159,7 +159,7 @@ class esteem_service_widget extends WP_Widget {
  		for( $i=0; $i<3; $i++ ) {
  			$var = 'page_id'.$i;
  			$page_id = isset( $instance[ $var ] ) ? $instance[ $var ] : '';
- 			
+
  			if( !empty( $page_id ) )
  				array_push( $page_array, $page_id );// Push the page id in the array
  		}
@@ -168,19 +168,19 @@ class esteem_service_widget extends WP_Widget {
 			'post_type'					=>  array( 'page' ),
 			'post__in'		 			=> $page_array,
 			'orderby' 		 			=> 'post__in'
-		) ); 
+		) );
 		echo $before_widget; ?>
 			<div class="services-block clearfix">
-				<?php 
+				<?php
 				$j = 1;
 	 			while( $get_featured_pages->have_posts() ):$get_featured_pages->the_post();
 					$page_title = get_the_title();
 					if( $j == 3 ) {
 						$service_class = "tg-one-third tg-one-third-last";
-					}	
+					}
 					else {
 						$service_class = "tg-one-third";
-					}				
+					}
 					?>
 					<div class="<?php echo $service_class; ?>">
 					<?php if ( $checkbox == 'true' ) : ?>
@@ -192,7 +192,7 @@ class esteem_service_widget extends WP_Widget {
 							?>
 							<h3 class="service-title"><a title="<?php the_title_attribute(); ?>" href="<?php the_permalink(); ?>"><?php echo $page_title; ?></a></h3>
 							<?php the_excerpt(); ?>
-							<a class="read-more" title="<?php the_title_attribute(); ?>" href="<?php the_permalink(); ?>"><?php echo of_get_option( 'esteem_read_more_text', __( 'Read more', 'esteem' ) ); ?></a>
+							<a class="read-more" title="<?php the_title_attribute(); ?>" href="<?php the_permalink(); ?>"><?php echo __( 'Read more', 'esteem' ); ?></a>
 						</div>
 					<?php else : ?>
 						<?php $esteem_icon = get_post_meta( $post->ID, '_esteem_font_icon', true );
@@ -200,7 +200,7 @@ class esteem_service_widget extends WP_Widget {
 							<div class="service-border">
 								<div class="service-image-wrap">
 									<?php
-									//$values = get_post_custom( $post->ID );  
+									//$values = get_post_custom( $post->ID );
 									$esteem_icon = isset( $esteem_icon ) ? esc_attr( $esteem_icon ) : '';
 									?>
 									<i class="<?php echo esc_html( $esteem_icon ); ?>"></i>
@@ -212,27 +212,27 @@ class esteem_service_widget extends WP_Widget {
 						<a class="read-more" title="<?php the_title_attribute(); ?>" href="<?php the_permalink(); ?>"><?php _e( 'Read more','esteem' ); ?></a>
 						<?php endif; ?>
 					</div><!-- .tg-one-third -->
-					<?php $j++; ?>					
+					<?php $j++; ?>
 				<?php endwhile;
 		 		// Reset Post Data
-	 			wp_reset_query(); 
+	 			wp_reset_query();
 	 			?>
 			</div>
-		<?php 
+		<?php
 		echo $after_widget;
  	}
  }
 
  /**
  * Widget for business layout that shows Featured page title and featured image.
- * Construct the widget. 
+ * Construct the widget.
  * i.e. Name, description and control options.
  */
  class esteem_recent_work_widget extends WP_Widget {
- 	function esteem_recent_work_widget() {
+ 	function __construct() {
  		$widget_ops = array( 'classname' => 'widget-recent-work', 'description' => __( 'Use this widget to show recent work, portfolio or any pages as your wish ( Business Layout )', 'esteem' ) );
-		$control_ops = array( 'width' => 200, 'height' =>250 ); 
-		parent::WP_Widget( false, $name = __( 'TG: Featured Widget', 'esteem' ), $widget_ops, $control_ops);
+		$control_ops = array( 'width' => 200, 'height' =>250 );
+		parent::__construct( false, $name = __( 'TG: Featured Widget', 'esteem' ), $widget_ops, $control_ops);
  	}
 
  	function form( $instance ) {
@@ -249,13 +249,13 @@ class esteem_service_widget extends WP_Widget {
 		}
 		$title = esc_attr( $instance[ 'title' ] );
 		?>
-	
+
 		<p>
-			<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 'esteem' ); ?></label> 
+			<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 'esteem' ); ?></label>
 			<input id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" />
 		</p>
 		<?php
-		for( $i=0; $i<4; $i++) { 
+		for( $i=0; $i<4; $i++) {
 			?>
 			<p>
 				<label for="<?php echo $this->get_field_id( key($defaults) ); ?>"><?php _e( 'Page', 'esteem' ); ?>:</label>
@@ -287,7 +287,7 @@ class esteem_service_widget extends WP_Widget {
  		for( $i=0; $i<6; $i++ ) {
  			$var = 'page_id'.$i;
  			$page_id = isset( $instance[ $var ] ) ? $instance[ $var ] : '';
- 			
+
  			if( !empty( $page_id ) )
  				array_push( $page_array, $page_id );// Push the page id in the array
  		}
@@ -310,24 +310,24 @@ class esteem_service_widget extends WP_Widget {
 	 				if ( $i % 4 == 0 ) { $class = 'tg-one-fourth tg-one-fourth-last'.' tg-column-'.$i; }
 	 				else { $class = 'tg-one-fourth'.' tg-column-'.$i; }
 					$page_title = get_the_title();
-					?>	
+					?>
 					<div class="<?php echo $class; ?>">
-						<?php 
+						<?php
 						if ( has_post_thumbnail( ) ) {
 							echo '<a title="'.get_the_title().'" href="'.get_permalink().'">'.get_the_post_thumbnail( $post->ID,'recent-thumb').'</a>';?>
 							<div class="recent-work-title">
 								<h6><?php the_title(); ?></h6>
 							</div>
-						<?php				
+						<?php
 						}
 						?>
 						<!-- <h3 class="custom-gallery-title"><a href="<?php the_permalink(); ?>" title=""><?php echo $page_title; ?></a></h3> -->
-					</div>			
-				<?php 
+					</div>
+				<?php
 					$i++;
 				endwhile;
 		 		// Reset Post Data
-	 			wp_reset_query(); 
+	 			wp_reset_query();
 	 			?>
 	 		</div><!-- .recent-work -->
 		<?php echo $after_widget;
@@ -336,14 +336,14 @@ class esteem_service_widget extends WP_Widget {
 
 /**
  * Widget for business page template that shows Call to Action section.
- * Construct the widget. 
+ * Construct the widget.
  * i.e. Name, description and control options.
  */
 class esteem_call_to_action_widget extends WP_Widget {
- 	function esteem_call_to_action_widget() {
+ 	function __construct() {
  		$widget_ops = array( 'classname' => 'widget-call-to-action', 'description' => __( 'Use this widget to show the call to action section', 'esteem' ) );
-		$control_ops = array( 'width' => 200, 'height' =>250 ); 
-		parent::WP_Widget( false, $name = __( 'TG: Call To Action Widget', 'esteem' ), $widget_ops, $control_ops);
+		$control_ops = array( 'width' => 200, 'height' =>250 );
+		parent::__construct( false, $name = __( 'TG: Call To Action Widget', 'esteem' ), $widget_ops, $control_ops);
  	}
 
  	function form( $instance ) {
@@ -351,32 +351,37 @@ class esteem_call_to_action_widget extends WP_Widget {
  		$esteem_defaults[ 'text_additional' ] = '';
  		$esteem_defaults[ 'button_text' ] = '';
  		$esteem_defaults[ 'button_url' ] = '';
+ 		$esteem_defaults[ 'new_tab' ] = '0';
  		$instance = wp_parse_args( (array) $instance, $esteem_defaults );
 		$text_main = esc_textarea( $instance[ 'text_main' ] );
 		$text_additional = esc_textarea( $instance[ 'text_additional' ] );
 		$button_text = esc_attr( $instance[ 'button_text' ] );
 		$button_url = esc_url( $instance[ 'button_url' ] );
+		$new_tab = $instance['new_tab'] ? 'checked="checked"' : '';
 		?>
-	
-		
+
+
 		<?php _e( 'Call to Action Main Text','esteem' ); ?>
 		<textarea class="widefat" rows="3" cols="20" id="<?php echo $this->get_field_id('text_main'); ?>" name="<?php echo $this->get_field_name('text_main'); ?>"><?php echo $text_main; ?></textarea>
 		<?php _e( 'Call to Action Additional Text','esteem' ); ?>
 		<textarea class="widefat" rows="3" cols="20" id="<?php echo $this->get_field_id('text_additional'); ?>" name="<?php echo $this->get_field_name('text_additional'); ?>"><?php echo $text_additional; ?></textarea>
 		<p>
-			<label for="<?php echo $this->get_field_id('button_text'); ?>"><?php _e( 'Button Text:', 'esteem' ); ?></label> 
+			<label for="<?php echo $this->get_field_id('button_text'); ?>"><?php _e( 'Button Text:', 'esteem' ); ?></label>
 			<input id="<?php echo $this->get_field_id('button_text'); ?>" name="<?php echo $this->get_field_name('button_text'); ?>" type="text" value="<?php echo $button_text; ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id('button_url'); ?>"><?php _e( 'Button Redirect Link:', 'esteem' ); ?></label> 
+			<label for="<?php echo $this->get_field_id('button_url'); ?>"><?php _e( 'Button Redirect Link:', 'esteem' ); ?></label>
 			<input id="<?php echo $this->get_field_id('button_url'); ?>" name="<?php echo $this->get_field_name('button_url'); ?>" type="text" value="<?php echo $button_url; ?>" />
+		</p>
+		<p>
+			<input class="checkbox" type="checkbox" <?php echo $new_tab; ?> id="<?php echo $this->get_field_id('new_tab'); ?>" name="<?php echo $this->get_field_name('new_tab'); ?>" /> <label for="<?php echo $this->get_field_id('new_tab'); ?>"><?php _e( 'Open in new tab', 'esteem' ); ?></label>
 		</p>
 		<?php
 	}
 
 	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
-		
+
 		if ( current_user_can('unfiltered_html') )
 			$instance['text_main'] =  $new_instance['text_main'];
 		else
@@ -389,6 +394,7 @@ class esteem_call_to_action_widget extends WP_Widget {
 
 		$instance[ 'button_text' ] = strip_tags( $new_instance[ 'button_text' ] );
 		$instance[ 'button_url' ] = esc_url_raw( $new_instance[ 'button_url' ] );
+		$instance[ 'new_tab' ] = isset( $new_instance[ 'new_tab' ] ) ? 1 : 0;
 
 		return $instance;
 	}
@@ -398,9 +404,10 @@ class esteem_call_to_action_widget extends WP_Widget {
  		extract( $instance );
 
  		global $post;
+ 		$new_tab = !empty( $instance[ 'new_tab' ] ) ? 'true' : 'false';
  		$text_main = empty( $instance['text_main'] ) ? '' : $instance['text_main'];
  		$text_additional = empty( $instance['text_additional'] ) ? '' : $instance['text_additional'];
- 		$button_text = isset( $instance[ 'button_text' ] ) ? $instance[ 'button_text' ] : ''; 		
+ 		$button_text = isset( $instance[ 'button_text' ] ) ? $instance[ 'button_text' ] : '';
  		$button_url = isset( $instance[ 'button_url' ] ) ? $instance[ 'button_url' ] : '#';
 
 		echo $before_widget;
@@ -408,7 +415,7 @@ class esteem_call_to_action_widget extends WP_Widget {
 				<div class="call-to-action clearfix">
 					<div class="call-to-action-text">
 						<div class="call-to-action-text-inner-wrap">
-						<?php 
+						<?php
 						if( !empty( $text_main ) ) {
 						?>
 							<h4><?php echo esc_html( $text_main ); ?></h4>
@@ -419,22 +426,22 @@ class esteem_call_to_action_widget extends WP_Widget {
 							<p><?php echo esc_html( $text_additional ); ?></p>
 						<?php
 						}
-						?>	
-						</div>					
+						?>
+						</div>
 					</div><!-- .call-to-action-text -->
-					<?php 
+					<?php
 					if( !empty( $button_text ) ) {
-					?>			
-						<div class="call-to-action-button">	
-							<div class="call-to-action-button-inner-wrap">	
-								<a class="call-to-action-link" href="<?php echo esc_url( $button_url ); ?>" title="<?php echo esc_attr( $button_text ); ?>"><?php echo esc_html( $button_text ); ?></a>
+					?>
+						<div class="call-to-action-button">
+							<div class="call-to-action-button-inner-wrap">
+								<a class="call-to-action-link" <?php if( $new_tab == 'true' ) { echo 'target="_blank"'; } ?> href="<?php echo esc_url( $button_url ); ?>" title="<?php echo esc_attr( $button_text ); ?>"><?php echo esc_html( $button_text ); ?></a>
 							</div>
 						</div><!-- .call-to-action-button -->
 					<?php
 					}
 					?>
 				</div><!-- .call-to-action clearfix -->
-		<?php 
+		<?php
 		echo $after_widget;
  	}
  }
@@ -444,10 +451,10 @@ class esteem_call_to_action_widget extends WP_Widget {
  */
 class esteem_testimonial_widget extends WP_Widget {
 
-	function esteem_testimonial_widget() {
+	function __construct() {
  		$widget_ops = array( 'classname' => 'widget_testimonial', 'description' => __( 'Display Testimonial', 'esteem' ) );
-		$control_ops = array( 'width' => 200, 'height' =>250 ); 
-		parent::WP_Widget( false, $name = __( 'TG: Testimonial', 'esteem' ), $widget_ops, $control_ops);
+		$control_ops = array( 'width' => 200, 'height' =>250 );
+		parent::__construct( false, $name = __( 'TG: Testimonial', 'esteem' ), $widget_ops, $control_ops);
  	}
 
 	function widget( $args, $instance ) {
@@ -461,15 +468,15 @@ class esteem_testimonial_widget extends WP_Widget {
 
 		$company1 = apply_filters( 'widget_company1', empty( $instance['company1'] ) ? '' : $instance['company1'], $instance, $this->id_base );
 		$company_link = apply_filters( 'widget_company_link', empty( $instance['company_link'] ) ? '' : $instance['company_link'], $instance, $this->id_base );
-	
-	
+
+
 		$text2 = apply_filters( 'widget_text2', empty( $instance['text2'] ) ? '' : $instance['text2'], $instance );
 		$image2 = apply_filters( 'widget_image2', empty( $instance['image2'] ) ? '' : $instance['image2'], $instance, $this->id_base );
 		$name2 = apply_filters( 'widget_name2', empty( $instance['name2'] ) ? '' : $instance['name2'], $instance, $this->id_base );
 		$byline2 = apply_filters( 'widget_byline2', empty( $instance['byline2'] ) ? '' : $instance['byline2'], $instance, $this->id_base );
 		$company2 = apply_filters( 'widget_company2', empty( $instance['company2'] ) ? '' : $instance['company2'], $instance, $this->id_base );
 		$company2_link = apply_filters( 'widget_company2_link', empty( $instance['company2_link'] ) ? '' : $instance['company2_link'], $instance, $this->id_base );
-	
+
 
 		echo $before_widget; ?>
 		<?php if ( !empty( $title ) ) { ?>
@@ -477,41 +484,45 @@ class esteem_testimonial_widget extends WP_Widget {
 				<?php echo $before_title. esc_html( $title ) . $after_title; ?>
 			</div>
 		<?php } ?>
-		<div class="testimonial">
-			<div class="tg-one-half">
-				<div class="testimonial-wrap">
-					<div class="testimonial-content clearfix">
-						<div class="author-image">
-							<img title="author" alt="author" src="<?php echo esc_url( $image1 ); ?>">
-						</div><!-- .testimonial-content -->
-						<div class="testimonial-text">
-							<p><?php echo esc_textarea( $text1 ); ?></p>
-						</div><!-- .testimonial-text -->
-					</div><!-- .testimonial-content -->
-					<div class="testimonial-byline">
-						<?php echo esc_html( $name1 ); ?>
-						<span class="author-desc"><?php echo esc_html( $byline1 ).' <a href="'.esc_url( $company_link).'" title="'.esc_html( $company1 ).'">'.esc_html( $company1 ).'</a>'?></span>
-					</div><!-- .byline -->
-				</div><!-- .testimonial-wrap -->
-			</div><!-- .tg-one-half -->
+      <div class="testimonial">
+         <?php if ( !empty( $name1 ) ) : ?>
+   			<div class="tg-one-half">
+   				<div class="testimonial-wrap">
+   					<div class="testimonial-content clearfix">
+   						<div class="author-image">
+   							<img title="author" alt="author" src="<?php echo esc_url( $image1 ); ?>">
+   						</div><!-- .testimonial-content -->
+   						<div class="testimonial-text">
+   							<p><?php echo esc_textarea( $text1 ); ?></p>
+   						</div><!-- .testimonial-text -->
+   					</div><!-- .testimonial-content -->
+   					<div class="testimonial-byline">
+   						<?php echo esc_html( $name1 ); ?>
+   						<span class="author-desc"><?php echo esc_html( $byline1 ).' <a href="'.esc_url( $company_link).'" title="'.esc_html( $company1 ).'">'.esc_html( $company1 ).'</a>'?></span>
+   					</div><!-- .byline -->
+   				</div><!-- .testimonial-wrap -->
+   			</div><!-- .tg-one-half -->
+         <?php endif; ?>
 
-			<div class="tg-one-half tg-one-half-last">
-				<div class="testimonial-wrap">
-					<div class="testimonial-content clearfix">
-						<div class="author-image">
-							<img title="author" alt="author" src="<?php echo esc_url( $image2 ); ?>">
-						</div><!-- .testimonial-content -->
-						<div class="testimonial-text">
-							<p><?php echo esc_textarea( $text2 ); ?></p>
-						</div><!-- .testimonial-text -->
-					</div><!-- .testimonial-content -->
-					<div class="testimonial-byline">
-						<?php echo esc_html( $name2 ); ?>
-						<span class="author-desc"><?php echo esc_html( $byline2 ).' <a href = "'.esc_url( $company2_link).'" title="'.esc_html( $company2 ).'">'.esc_html( $company2 ).'</a>'?></span>
-					</div><!-- .byline -->
-				</div><!-- .testimonial-wrap -->
-			</div><!-- .tg-one-half -->
-		</div><!-- .testimonial -->
+         <?php if ( !empty( $name2 ) ) : ?>
+   			<div class="tg-one-half tg-one-half-last">
+   				<div class="testimonial-wrap">
+   					<div class="testimonial-content clearfix">
+   						<div class="author-image">
+   							<img title="author" alt="author" src="<?php echo esc_url( $image2 ); ?>">
+   						</div><!-- .testimonial-content -->
+   						<div class="testimonial-text">
+   							<p><?php echo esc_textarea( $text2 ); ?></p>
+   						</div><!-- .testimonial-text -->
+   					</div><!-- .testimonial-content -->
+   					<div class="testimonial-byline">
+   						<?php echo esc_html( $name2 ); ?>
+   						<span class="author-desc"><?php echo esc_html( $byline2 ).' <a href = "'.esc_url( $company2_link).'" title="'.esc_html( $company2 ).'">'.esc_html( $company2 ).'</a>'?></span>
+   					</div><!-- .byline -->
+   				</div><!-- .testimonial-wrap -->
+   			</div><!-- .tg-one-half -->
+         <?php endif; ?>
+      </div><!-- .testimonial -->
 
 		<?php echo $after_widget;
 

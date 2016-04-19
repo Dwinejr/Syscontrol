@@ -644,11 +644,20 @@
       [class*="span"] {
         .input-block-level();
         float: @floatDirection;
+        & when (@is_rtl = false) {
         margin-left: @fluidGridGutterWidth;
         *margin-left: @fluidGridGutterWidth - (.5 / @gridRowWidth * 100 * 1%);
+        margin-right: 0;
+        }
+        & when (@is_rtl = true) {
+        margin-right: @fluidGridGutterWidth;
+        *margin-right: @fluidGridGutterWidth - (.5 / @gridRowWidth * 100 * 1%);
+        margin-left: 0;
+        }
       }
       [class*="span"]:first-child {
         margin-left: 0;
+        margin-right: 0;
       }
 
       // Space grid-sized controls properly if multiple per line

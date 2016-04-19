@@ -48,7 +48,7 @@
 		position: absolute;
 	}
 	.nav-menu {
-		clear: both;	
+		clear: both;
 	}
 	.nav-menu > ul > li > a, .menu > ul > li > a {
 		height: auto;
@@ -78,7 +78,7 @@
 		margin-right: 0;
 	}
 }
-@media screen and (max-width: 767px) {	
+@media screen and (max-width: 767px) {
 	#primary, #secondary {
 		float: none;
 		width: 100%;
@@ -137,13 +137,31 @@
 	}
 	.widget_testimonial .tg-one-half-last {
 		padding-bottom: 0;
-	}	
+	}
 	.image-icon-wrap {
 		top: 35%;
 	}
 	.mask .img-icon {
 		font-size: 18px;
 	}
+	.gallery-columns-4 .gallery-item,
+   .gallery-columns-5 .gallery-item,
+   .gallery-columns-6 .gallery-item,
+   .gallery-columns-7 .gallery-item,
+   .gallery-columns-8 .gallery-item,
+   .gallery-columns-9 .gallery-item {
+   	width:25%;
+   }
+}
+@media only screen and (max-width: 420px) {
+   .gallery-columns-4 .gallery-item,
+   .gallery-columns-5 .gallery-item,
+   .gallery-columns-6 .gallery-item,
+   .gallery-columns-7 .gallery-item,
+   .gallery-columns-8 .gallery-item,
+   .gallery-columns-9 .gallery-item {
+      width:33.33%;
+   }
 }
 @media screen and (max-width: 400px) {
 	.widget-recent-work .tg-one-fourth {

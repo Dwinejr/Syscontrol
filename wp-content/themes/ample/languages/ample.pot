@@ -63,16 +63,37 @@ msgstr ""
 msgid "Tagged on: "
 msgstr ""
 
-#: content.php:40
+#: content.php:42 inc/widgets/widgets.php:618
 msgid "Read more"
 msgstr ""
 
-#: functions.php:52
+#: functions.php:74
 msgid "Primary Menu"
 msgstr ""
 
-#: functions.php:53
+#: functions.php:75
 msgid "Footer Menu"
+msgstr ""
+
+#: functions.php:141
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: functions.php:144
+msgid "Theme Options"
+msgstr ""
+
+#: functions.php:146
+#, php-format
+msgid ""
+"<p style=\"font-size: 16px; max-width: 800px\";>As our themes are hosted on "
+"WordPress repository, we need to follow the WordPress theme guidelines and "
+"as per the new guiedlines we have migrated all our Theme Options to "
+"Customizer.</p><p style=\"font-size: 16px; max-width: 800px\";>We too think "
+"this is a better move in the long run. All the options are unchanged, it is "
+"just that they are moved to customizer. So, please use this <a href=\"%1$s"
+"\">link</a> to customize your site. If you have any issues then do let us "
+"know via our <a href=\"%2$s\">Contact form</a></p>"
 msgstr ""
 
 #: inc/admin/meta-boxes.php:16 inc/admin/meta-boxes.php:18
@@ -103,190 +124,304 @@ msgstr ""
 msgid "Both Sidebar"
 msgstr ""
 
-#: inc/admin/options/includes/class-options-framework-admin.php:91
-#: inc/admin/options/includes/class-options-framework-admin.php:92
-msgid "Theme Options"
+#: inc/customizer.php:13
+msgid "Header"
 msgstr ""
 
-#: inc/admin/options/includes/class-options-framework-admin.php:198
-msgid "Save Options"
+#: inc/customizer.php:20
+msgid "Header Logo"
 msgstr ""
 
-#: inc/admin/options/includes/class-options-framework-admin.php:199
-msgid "Restore Defaults"
+#: inc/customizer.php:34
+msgid "Upload logo for your header."
 msgstr ""
 
-#: inc/admin/options/includes/class-options-framework-admin.php:199
-msgid "Click OK to reset. Any theme settings will be lost!"
+#: inc/customizer.php:41
+msgid "Show"
 msgstr ""
 
-#: inc/admin/options/includes/class-options-framework-admin.php:230
-msgid "Default options restored."
+#: inc/customizer.php:54
+msgid "Choose the option that you want."
 msgstr ""
 
-#: inc/admin/options/includes/class-options-framework-admin.php:284
-msgid "Options saved."
+#: inc/customizer.php:57
+msgid "Header Logo Only"
 msgstr ""
 
-#: inc/admin/options/includes/class-options-media-uploader.php:62
-msgid "No file chosen"
+#: inc/customizer.php:58
+msgid "Header Text Only"
 msgstr ""
 
-#: inc/admin/options/includes/class-options-media-uploader.php:65
-#: inc/admin/options/includes/class-options-media-uploader.php:118
-msgid "Upload"
+#: inc/customizer.php:59
+msgid "Show Both"
 msgstr ""
 
-#: inc/admin/options/includes/class-options-media-uploader.php:67
-#: inc/admin/options/includes/class-options-media-uploader.php:119
-msgid "Remove"
+#: inc/customizer.php:60
+msgid "Disable"
 msgstr ""
 
-#: inc/admin/options/includes/class-options-media-uploader.php:70
-msgid "Upgrade your version of WordPress for full media support."
+#: inc/customizer.php:66
+msgid "Header Title Bar Background Image"
 msgstr ""
 
-#: inc/admin/options/includes/class-options-media-uploader.php:94
-msgid "View File"
+#: inc/customizer.php:79
+msgid "Upload Background Image for Header Title Bar."
 msgstr ""
 
-#: inc/admin/options/includes/class-options-sanitization.php:316
-msgid "No Repeat"
+#: inc/customizer.php:94
+msgid "Choose Background Color for Header Title Bar"
 msgstr ""
 
-#: inc/admin/options/includes/class-options-sanitization.php:317
-msgid "Repeat Horizontally"
+#: inc/customizer.php:109
+msgid "Choose Text Color for Header Title Bar"
 msgstr ""
 
-#: inc/admin/options/includes/class-options-sanitization.php:318
-msgid "Repeat Vertically"
+#: inc/customizer.php:117
+msgid "Header Image Position"
 msgstr ""
 
-#: inc/admin/options/includes/class-options-sanitization.php:319
-msgid "Repeat All"
+#: inc/customizer.php:130
+msgid "Choose top header image display position."
 msgstr ""
 
-#: inc/admin/options/includes/class-options-sanitization.php:331
-msgid "Top Left"
+#: inc/customizer.php:133
+msgid ""
+"Position Above (Default): Display the Header image just above the site title "
+"and main menu part."
 msgstr ""
 
-#: inc/admin/options/includes/class-options-sanitization.php:332
-msgid "Top Center"
+#: inc/customizer.php:134
+msgid ""
+"Position Below: Display the Header image just below the site title and main "
+"menu part."
 msgstr ""
 
-#: inc/admin/options/includes/class-options-sanitization.php:333
-msgid "Top Right"
+#: inc/customizer.php:143
+msgid "Design"
 msgstr ""
 
-#: inc/admin/options/includes/class-options-sanitization.php:334
-msgid "Middle Left"
+#: inc/customizer.php:150
+msgid "Site Layout"
 msgstr ""
 
-#: inc/admin/options/includes/class-options-sanitization.php:335
-msgid "Middle Center"
+#: inc/customizer.php:163
+msgid "Choose your site layout. The change is reflected in whole site."
 msgstr ""
 
-#: inc/admin/options/includes/class-options-sanitization.php:336
-msgid "Middle Right"
+#: inc/customizer.php:166
+msgid "Wide layout"
 msgstr ""
 
-#: inc/admin/options/includes/class-options-sanitization.php:337
-msgid "Bottom Left"
+#: inc/customizer.php:167
+msgid "Boxed layout"
 msgstr ""
 
-#: inc/admin/options/includes/class-options-sanitization.php:338
-msgid "Bottom Center"
+#: inc/customizer.php:236
+msgid "Default layout"
 msgstr ""
 
-#: inc/admin/options/includes/class-options-sanitization.php:339
-msgid "Bottom Right"
+#: inc/customizer.php:250
+msgid ""
+"Select default layout. This layout will be reflected in whole site archives, "
+"search etc. The layout for a single post and page can be controlled from "
+"below options."
 msgstr ""
 
-#: inc/admin/options/includes/class-options-sanitization.php:351
-msgid "Scroll Normally"
+#: inc/customizer.php:264
+msgid "Default layout for pages only"
 msgstr ""
 
-#: inc/admin/options/includes/class-options-sanitization.php:352
-msgid "Fixed in Place"
+#: inc/customizer.php:278
+msgid ""
+"Select default layout for pages. This layout will be reflected in all pages "
+"unless unique layout is set for specific page."
 msgstr ""
 
-#: inc/admin/options/includes/class-options-sanitization.php:424
-msgid "Normal"
+#: inc/customizer.php:292
+msgid "Default layout for single posts only"
 msgstr ""
 
-#: inc/admin/options/includes/class-options-sanitization.php:425
-msgid "Italic"
+#: inc/customizer.php:306
+msgid ""
+"Select default layout for single posts. This layout will be reflected in all "
+"single posts unless unique layout is set for specific post."
 msgstr ""
 
-#: inc/admin/options/includes/class-options-sanitization.php:426
-msgid "Bold"
+#: inc/customizer.php:322
+msgid "Primary color option"
 msgstr ""
 
-#: inc/admin/options/includes/class-options-sanitization.php:427
-msgid "Bold Italic"
+#: inc/customizer.php:334
+msgid ""
+"This will reflect in links, buttons and many others. Choose a color to match "
+"your site."
 msgstr ""
 
-#: inc/functions.php:124
+#: inc/customizer.php:357
+msgid "Custom CSS"
+msgstr ""
+
+#: inc/customizer.php:370
+msgid "Write your custom css."
+msgstr ""
+
+#: inc/customizer.php:383
+msgid "Slider"
+msgstr ""
+
+#: inc/customizer.php:388
+msgid "Activate slider"
+msgstr ""
+
+#: inc/customizer.php:401
+msgid "Check to activate slider."
+msgstr ""
+
+#: inc/customizer.php:409
+#, php-format
+msgid "Slider #%1$s"
+msgstr ""
+
+#: inc/customizer.php:423
+msgid "Upload image"
+msgstr ""
+
+#: inc/customizer.php:438
+msgid "Enter title for this slide"
+msgstr ""
+
+#: inc/customizer.php:452
+msgid "Enter button text"
+msgstr ""
+
+#: inc/customizer.php:467
+msgid "Enter link to redirect"
+msgstr ""
+
+#: inc/customizer.php:480
+msgid "Additional"
+msgstr ""
+
+#: inc/customizer.php:485
+msgid "Favicon"
+msgstr ""
+
+#: inc/customizer.php:498
+msgid "Check to activate favicon. Upload fav icon from below option"
+msgstr ""
+
+#: inc/customizer.php:512
+msgid "Upload favicon for your site."
+msgstr ""
+
+#: inc/customizer.php:576
+msgid "Category to hide from Blog"
+msgstr ""
+
+#: inc/customizer.php:589
+msgid "Select a Category or Categories to hide its posts from Blog page."
+msgstr ""
+
+#: inc/customizer.php:609
+msgid "Theme Info"
+msgstr ""
+
+#: inc/customizer.php:613
+msgid "Free Support"
+msgstr ""
+
+#: inc/customizer.php:617
+msgid "Documentation"
+msgstr ""
+
+#: inc/customizer.php:621
+msgid "View Demo"
+msgstr ""
+
+#: inc/customizer.php:625
+msgid "Rate this theme"
+msgstr ""
+
+#: inc/customizer.php:645
+msgid "Ample Important Links"
+msgstr ""
+
+#: inc/customizer.php:658
+msgid "If you like our work. Buy us a beer."
+msgstr ""
+
+#: inc/customizer.php:723
+msgid "View PRO version"
+msgstr ""
+
+#: inc/functions.php:131
 msgid "WordPress"
 msgstr ""
 
-#: inc/functions.php:126
+#: inc/functions.php:133
 msgid "ThemeGrill"
 msgstr ""
 
-#: inc/functions.php:128
+#: inc/functions.php:135
 #, php-format
 msgid "Copyright &copy; %1$s %2$s."
 msgstr ""
 
-#: inc/functions.php:128
+#: inc/functions.php:135
 #, php-format
 msgid "Powered by %s."
 msgstr ""
 
-#: inc/functions.php:128
+#: inc/functions.php:135
 #, php-format
 msgid "Theme: %1$s by %2$s."
 msgstr ""
 
-#: inc/functions.php:379
+#: inc/functions.php:455
+#, php-format
+msgid ""
+"<span class=\"entry-date\"><i class=\"fa fa-aw fa-calendar-o\"></i> <a href="
+"\"%1$s\" title=\"%2$s\" rel=\"bookmark\">%3$s</a></span>"
+msgstr ""
+
+#: inc/functions.php:466
 msgid "No Comments"
 msgstr ""
 
-#: inc/functions.php:379
+#: inc/functions.php:466
 msgid "1 Comment"
 msgstr ""
 
-#: inc/functions.php:379
+#: inc/functions.php:466
 msgid "% Comments"
 msgstr ""
 
-#: inc/functions.php:379
+#: inc/functions.php:466
 msgid "Comments Off"
 msgstr ""
 
-#: inc/functions.php:402
+#: inc/functions.php:489
 msgid "Pingback:"
 msgstr ""
 
-#: inc/functions.php:402
+#: inc/functions.php:489
 msgid "(Edit)"
 msgstr ""
 
-#: inc/functions.php:417
+#: inc/functions.php:504
 msgid "Post author"
 msgstr ""
 
-#: inc/functions.php:420
+#: inc/functions.php:507
 #, php-format
 msgid "%1$s at %2$s"
 msgstr ""
 
-#: inc/functions.php:428
+#: inc/functions.php:515
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: inc/functions.php:433
+#: inc/functions.php:520
 msgid "Reply"
 msgstr ""
 
@@ -310,20 +445,20 @@ msgstr ""
 msgid "Year: %s"
 msgstr ""
 
-#: inc/header-functions.php:106
+#: inc/header-functions.php:110
 msgid "Archives"
 msgstr ""
 
-#: inc/header-functions.php:111
+#: inc/header-functions.php:115
 msgid "Page NOT Found"
 msgstr ""
 
-#: inc/header-functions.php:114
+#: inc/header-functions.php:118
 #, php-format
 msgid "Search Results For: %s"
 msgstr ""
 
-#: inc/header-functions.php:146
+#: inc/header-functions.php:150
 msgid "You are here:"
 msgstr ""
 
@@ -489,10 +624,6 @@ msgstr ""
 msgid "Show posts from a category"
 msgstr ""
 
-#: inc/widgets/widgets.php:618
-msgid " Read more"
-msgstr ""
-
 #: inc/widgets/widgets.php:640
 msgid "Use this widget to show the call to action section."
 msgstr ""
@@ -547,232 +678,6 @@ msgstr ""
 msgid ""
 "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
 "searching can help."
-msgstr ""
-
-#: options.php:33
-msgid "Header"
-msgstr ""
-
-#: options.php:38
-msgid "Header Logo"
-msgstr ""
-
-#: options.php:39
-msgid "Upload logo for your header."
-msgstr ""
-
-#: options.php:45
-msgid "Header Logo Only"
-msgstr ""
-
-#: options.php:46
-msgid "Header Text Only"
-msgstr ""
-
-#: options.php:47
-msgid "Show Both"
-msgstr ""
-
-#: options.php:48
-msgid "Disable"
-msgstr ""
-
-#: options.php:51
-msgid "Show"
-msgstr ""
-
-#: options.php:52
-msgid "Choose the option that you want."
-msgstr ""
-
-#: options.php:60
-msgid "Header Title Bar Background Image"
-msgstr ""
-
-#: options.php:61
-msgid "Upload Background Image for Header Title Bar."
-msgstr ""
-
-#: options.php:67
-msgid "Choose Background Color for Header Title Bar"
-msgstr ""
-
-#: options.php:74
-msgid "Choose Text Color for Header Title Bar"
-msgstr ""
-
-#: options.php:81
-msgid "Header Image Position"
-msgstr ""
-
-#: options.php:82
-msgid "Choose top header image display position."
-msgstr ""
-
-#: options.php:87
-msgid ""
-"Position Above (Default): Display the Header image just above the site title "
-"and main menu part."
-msgstr ""
-
-#: options.php:88
-msgid ""
-"Position Below: Display the Header image just below the site title and main "
-"menu part."
-msgstr ""
-
-#: options.php:95
-msgid "Design"
-msgstr ""
-
-#: options.php:100
-msgid "Site Layout"
-msgstr ""
-
-#: options.php:101
-msgid "Choose your site layout. The change is reflected in whole site."
-msgstr ""
-
-#: options.php:106
-msgid "Wide layout"
-msgstr ""
-
-#: options.php:107
-msgid "Boxed layout"
-msgstr ""
-
-#: options.php:112
-msgid "Default layout"
-msgstr ""
-
-#: options.php:113
-msgid ""
-"Select default layout. This layout will be reflected in whole site archives, "
-"search etc. The layout for a single post and page can be controlled from "
-"below options."
-msgstr ""
-
-#: options.php:127
-msgid "Default layout for pages only"
-msgstr ""
-
-#: options.php:128
-msgid ""
-"Select default layout for pages. This layout will be reflected in all pages "
-"unless unique layout is set for specific page."
-msgstr ""
-
-#: options.php:142
-msgid "Default layout for single posts only"
-msgstr ""
-
-#: options.php:143
-msgid ""
-"Select default layout for single posts. This layout will be reflected in all "
-"single posts unless unique layout is set for specific post."
-msgstr ""
-
-#: options.php:157
-msgid "Primary color option"
-msgstr ""
-
-#: options.php:158
-msgid ""
-"This will reflect in links, buttons and many others. Choose a color to match "
-"your site."
-msgstr ""
-
-#: options.php:165
-msgid "Custom CSS"
-msgstr ""
-
-#: options.php:166
-msgid "Write your custom css."
-msgstr ""
-
-#: options.php:175
-msgid "Slider"
-msgstr ""
-
-#: options.php:180
-msgid "Activate slider"
-msgstr ""
-
-#: options.php:181
-msgid "Check to activate slider."
-msgstr ""
-
-#: options.php:189
-#, php-format
-msgid "Slider #%1$s"
-msgstr ""
-
-#: options.php:190
-msgid "Upload image"
-msgstr ""
-
-#: options.php:195
-msgid "Enter title for this slide"
-msgstr ""
-
-#: options.php:201
-msgid "Enter button text"
-msgstr ""
-
-#: options.php:207
-msgid "Enter link to redirect"
-msgstr ""
-
-#: options.php:217
-msgid "Additional"
-msgstr ""
-
-#: options.php:222
-msgid "Favicon"
-msgstr ""
-
-#: options.php:223
-msgid "Check to activate favicon. Upload fav icon from below option"
-msgstr ""
-
-#: options.php:230
-msgid "Upload favicon for your site."
-msgstr ""
-
-#: options.php:237
-msgid "Category to hide from Blog"
-msgstr ""
-
-#: options.php:238
-msgid "Select a Category or Categories to hide its posts from Blog page."
-msgstr ""
-
-#: options.php:257
-msgid "About Ample"
-msgstr ""
-
-#: options.php:259
-msgid "Upgrade to Pro"
-msgstr ""
-
-#: options.php:260
-msgid "Free Support"
-msgstr ""
-
-#: options.php:261
-msgid "Documentation"
-msgstr ""
-
-#: options.php:262
-msgid "View Demo"
-msgstr ""
-
-#: options.php:263
-msgid "Rate this theme"
-msgstr ""
-
-#: options.php:266
-msgid "If you like our work. Buy us a beer."
 msgstr ""
 
 #: searchform.php:13

@@ -50,7 +50,7 @@ if ( ! class_exists( 'TC_headings' ) ) :
         add_filter( 'tc_archive_header_class'         , array( $this , 'tc_archive_title_and_class_callback'), 10, 2 );
         add_filter( 'tc_headings_archive_html'        , array( $this , 'tc_archive_title_and_class_callback'), 10, 1 );
         global $wp_query;
-        if ( tc__f('__is_home') || $wp_query -> is_posts_page )
+        if ( tc__f('__is_home') )
           add_filter( 'tc_archive_headings_separator' , '__return_false' );
       }
 
@@ -219,6 +219,9 @@ if ( ! class_exists( 'TC_headings' ) ) :
       * @since Customizr 3.3+
       */
       public function tc_is_edit_enabled() {
+        //never display when customizing
+        if ( TC___::$instance -> tc_is_customizing() )
+          return false; 
         //when are we displaying the edit link?
         $edit_enabled = ( (is_user_logged_in()) && is_page() && current_user_can('edit_pages') ) ? true : false;
         return ( (is_user_logged_in()) && 0 !== get_the_ID() && current_user_can('edit_post' , get_the_ID() ) && ! is_page() ) ? true : $edit_enabled;
@@ -352,7 +355,7 @@ if ( ! class_exists( 'TC_headings' ) ) :
             $user_id = get_query_var( 'author' );
             $content    = sprintf( '<h1 class="%1$s">%2$s %3$s</h1>',
                   apply_filters( 'tc_archive_icon', 'format-icon' ),
-                  apply_filters( 'tc_author_archive_title' , __( '' , 'customizr' ) ),
+                  apply_filters( 'tc_author_archive_title' , '' ),
                   '<span class="vcard">' . get_the_author_meta( 'display_name' , $user_id ) . '</span>'
             );
             if ( apply_filters ( 'tc_show_author_meta' , get_the_author_meta( 'description', $user_id  ) ) ) {
@@ -378,7 +381,7 @@ if ( ! class_exists( 'TC_headings' ) ) :
           else if ( is_category() ) {
             $content    = sprintf( '<h1 class="%1$s">%2$s %3$s</h1>',
                 apply_filters( 'tc_archive_icon', 'format-icon' ),
-                apply_filters( 'tc_category_archive_title' , __( '' , 'customizr' ) ),
+                apply_filters( 'tc_category_archive_title' , '' ),
                 '<span>' . single_cat_title( '' , false ) . '</span>'
             );
             if ( apply_filters ( 'tc_show_cat_description' , category_description() ) ) {
@@ -393,7 +396,7 @@ if ( ! class_exists( 'TC_headings' ) ) :
           else if ( is_tag() ) {
             $content    = sprintf( '<h1 class="%1$s">%2$s %3$s</h1>',
                 apply_filters( 'tc_archive_icon', 'format-icon' ),
-                apply_filters( 'tc_tag_archive_title' , __( '' , 'customizr' ) ),
+                apply_filters( 'tc_tag_archive_title' , '' ),
                 '<span>' . single_tag_title( '' , false ) . '</span>'
             );
             if ( apply_filters ( 'tc_show_tag_description' , tag_description() ) ) {

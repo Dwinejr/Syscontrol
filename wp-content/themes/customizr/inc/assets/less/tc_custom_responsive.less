@@ -30,6 +30,7 @@
     line-height: 385px;
     overflow: hidden;
     min-height: 385px;
+    max-height: 385px;
   }
   #left .round-div {
     left: -77px;
@@ -97,11 +98,19 @@
   .tc-open-on-click .dropdown-submenu:hover > .dropdown-menu {
     display: none;
   }
+  /* Side Nav */
+  .tc-sn-inner.nav-collapse.collapse {
+    height: 100% !important;
+    overflow: auto !important;
+  }
   //expand submenus for tablets in landscape mode
   // .tc-is-mobile .navbar .nav li > ul ul {
   //   display: block;
   // }
+
 }
+
+
 
 @media (max-width: 979px) {
   .tc-header .outside {
@@ -112,6 +121,7 @@
     float:none;
     text-align: center;
     width: 100%;
+    clear: both;
   }
   .container.navbar-wrapper {
     margin-bottom: 0;
@@ -146,12 +156,10 @@
 
   /* Default Menu */
   .nav-collapse, .nav-collapse.collapse {
-    overflow: hidden;
-    height: 0;
     position: absolute;
     z-index:3000;
     right: 0px;
-    top: 42px;
+    top: 52px;
     background-color: #FAFAFA;
     background-image: -moz-linear-gradient(top, white, #F2F2F2);
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(white), to(#F2F2F2));
@@ -179,7 +187,14 @@
   .nav-collapse, .nav-collapse.collapse.in .nav{
     display: block;
   }
-
+  .tc-header:not(.tc-second-menu-on) .navbar div > ul.nav > .menu-item:first-child > a {
+    & when (@is_rtl = false){
+      padding-left: 15px;
+    }
+    & when (@is_rtl = true){
+      padding-right: 15px;
+    }
+  }
   .nav-collapse .nav > li > a, .nav-collapse .dropdown-menu a {
     font-weight:normal;
     -webkit-border-radius: 0px;
@@ -199,10 +214,7 @@
     padding-left: 25px;
   }
   .nav-collapse .dropdown-menu li li a {
-    padding-left: 50px;
-  }
-  .nav-collapse .dropdown-menu li li li a {
-    padding-left: 75px;
+    padding-left: 30px;
   }
 
   /* Hover Menu */
@@ -217,7 +229,7 @@
     text-align: @textAlign;
     position: relative;
   }
-  .tc-hover-menu.nav a:after {
+  .tc-header:not(.tc-second-menu-on) .tc-hover-menu.nav a:after {
     border-top: none;
     border-right: none;
     border-left: none;
@@ -229,6 +241,10 @@
     display: none;
   }
 
+  /* second menu placeholder */
+  .navbar .tc-menu-placeholder, .navbar .tc-main-menu-notice {
+    display: none;
+  }
 
   /* social blocks */
   .social-block {
@@ -242,6 +258,7 @@
     line-height: 309px;
     overflow: hidden;
     min-height: 309px;
+    max-height: 309px;
   }
 
   .featurette {
@@ -350,6 +367,12 @@
   .sticky-enabled .tc-header {
     min-height: 40px;
   }
+  .sticky-enabled .tc-header .brand {
+    & when (@is_rtl = true){
+    float: left;
+    text-align: left;
+    }
+  }
   .sticky-enabled .tc-header .outside {
     display: none;
   }
@@ -358,18 +381,16 @@
     margin: 0px;
   }
 
+  .tc-header .navbar .btn-toggle-nav,
   .navbar .btn-navbar {
     display: block;
     margin: 10px 0;
+    /*float: right;*/
   }
   /* GIVE NAVBAR A SMALLER Z-index than logo / title SINCE V3.2.0*/
   .sticky-enabled .navbar-wrapper {
     position: relative;
     z-index: 1;
-  }
-  /* do not display menu button when sticky enabled and tc-menu-off enabled */
-  .sticky-enabled .tc-menu-off .btn-navbar {
-    display: none;
   }
 
   .no-navbar .nav-collapse, .nav-collapse.collapse {
@@ -394,6 +415,9 @@
     float: left;
     margin: 14px 0 0;
   }
+  .logo-right .navbar .navbar-inner .social-block {
+    float: right;
+  }
   /* MENU CHANGES SINCE V3.2.0 */
   .navbar .nav-collapse .dropdown-menu a {
     padding: 3px 5px;
@@ -410,10 +434,10 @@
 
   .navbar .nav-collapse ul.nav > li li li a {
      & when (@is_rtl = true) {
-      padding-right: 60px;
+      padding-right: 50px;
     }
     & when (@is_rtl = false) {
-      padding-left: 60px;
+      padding-left: 50px;
     }
   }
 
@@ -456,8 +480,11 @@
     background-color:#fff;
   }
 
-  button.btn.btn-navbar {
+/*  button.btn.btn-navbar {
     transition: all 0.1s ease-in-out;
+  }*/
+  .btn-toggle-nav .menu-label {
+    display: none;
   }
 }
 @media (max-width: 979px) and (min-width: 768px)  {
@@ -517,6 +544,10 @@
   #right.widget-area:before{
     border-left:0px;
   }
+  .tc-no-sticky-header .navbar-wrapper, 
+  .sticky-disabled .navbar-wrapper { 
+    clear: both; 
+  }
   .navbar-inner {
     margin: -20px;
   }
@@ -529,6 +560,7 @@
     line-height: 308px;
     overflow: hidden;
     min-height: 308px;
+    max-height: 308px;
   }
 
   .item .carousel-caption h1 {
@@ -633,6 +665,7 @@
     line-height: 190px;
     overflow: hidden;
     min-height: 190px;
+    max-height: 190px;
   }
 
   .carousel-caption {
@@ -681,12 +714,35 @@
     overflow: hidden;
   }
 }
-
+/* Side Nav */
+@media (max-width: 400px){
+  nav#tc-sn {
+    width: 400px;
+    max-width: 100%;
+  }
+  #tc-sn .nav-collapse {
+    background: #fff;
+  }
+  /* when open, give to the menu a greater z-index
+   */
+  .tc-sn-visible:not(.sn-close) #tc-sn {
+    z-index: 9999;
+  }
+  .tc-sn-visible {
+    overflow: hidden;
+  }
+  /* Hack*/
+  /* prevent pan in mobiles max-width: 400px: should we apply this for all tc-is-mobile losing the page scroll down ?? */
+  .tc-sn-visible #tc-page-wrap { position: absolute; width: 100%;}
+  .tc-sn-visible:not(.sn-close) #tc-page-wrap { left: initial !important;}
+  /*end prevent overflows in mobiles */
+}
 @media (max-width: 320px) {
   .carousel .item {
     line-height: 140px;
     overflow: hidden;
     min-height: 140px;
+    max-height: 140px;
   }
   .carousel-caption {
     padding: 2%;

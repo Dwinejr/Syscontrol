@@ -9,70 +9,6 @@
 
 /****************************************************************************************/
 
-// Backwards compatibility for older versions
-if ( ! function_exists( '_wp_render_title_tag' ) ) :
-
-   add_action( 'wp_head', 'esteem_render_title' );
-   function esteem_render_title() {
-      ?>
-      <title>
-      <?php
-      /**
-       * Print the <title> tag based on what is being viewed.
-       */
-      wp_title( '|', true, 'right' );
-      ?>
-      </title>
-      <?php
-   }
-
-	add_filter( 'wp_title', 'esteem_filter_wp_title' );
-	if ( ! function_exists( 'esteem_filter_wp_title' ) ) :
-		/**
-		 * Modifying the Title
-		 *
-		 * Function tied to the wp_title filter hook.
-		 * @uses filter wp_title
-		 */
-		function esteem_filter_wp_title( $title ) {
-			global $page, $paged;
-
-			// Get the Site Name
-		   $site_name = get_bloginfo( 'name' );
-
-		   // Get the Site Description
-		   $site_description = get_bloginfo( 'description' );
-
-		   $filtered_title = '';
-
-			// For Homepage or Frontpage
-		   if(  is_home() || is_front_page() ) {
-				$filtered_title .= $site_name;
-				if ( !empty( $site_description ) )  {
-		        	$filtered_title .= ' &#124; '. $site_description;
-				}
-		   }
-			elseif( is_feed() ) {
-				$filtered_title = '';
-			}
-			else{
-				$filtered_title = $title . $site_name;
-			}
-
-			// Add a page number if necessary:
-			if( $paged >= 2 || $page >= 2 ) {
-				$filtered_title .= ' &#124; ' . sprintf( __( 'Page %s', 'esteem' ), max( $paged, $page ) );
-			}
-
-			// Return the modified title
-		   return $filtered_title;
-		}
-	endif;
-endif;
-
-/****************************************************************************************/
-
-
 if ( ! function_exists( 'esteem_render_header_image' ) ) :
 /**
  * Shows the small info text on top header part
@@ -98,10 +34,10 @@ function esteem_slider() { ?>
 		<div class="slider-cycle">
 			<?php
 			for( $i = 1; $i <= 4; $i++ ) {
-				$esteem_slider_title = of_get_option( 'esteem_slider_title'.$i , '' );
-				$esteem_slider_text = of_get_option( 'esteem_slider_text'.$i , '' );
-				$esteem_slider_image = of_get_option( 'esteem_slider_image'.$i , '' );
-				$esteem_slider_link = of_get_option( 'esteem_slider_link'.$i , '#' );
+				$esteem_slider_title = get_theme_mod( 'esteem_slider_title'.$i , '' );
+				$esteem_slider_text = get_theme_mod( 'esteem_slider_text'.$i , '' );
+				$esteem_slider_image = get_theme_mod( 'esteem_slider_image'.$i , '' );
+				$esteem_slider_link = get_theme_mod( 'esteem_slider_link'.$i , '#' );
 
 				if( !empty( $esteem_slider_image ) ) {
 					if ( $i == 1 ) { $classes = "slides displayblock"; } else { $classes = "slides displaynone"; }
@@ -213,7 +149,7 @@ if ( ! function_exists( 'esteem_breadcrumb' ) ) :
  */
 function esteem_breadcrumb() {
 	if( function_exists( 'bcn_display' ) ) {
-		echo '<div class="breadcrumb">';
+		echo '<div class="breadcrumb" xmlns:v="http://rdf.data-vocabulary.org/#">';
 		echo '<span class="breadcrumb-title">'.__( 'You are here:', 'esteem' ).'</span>';
 		bcn_display();
 		echo '</div> <!-- .breadcrumb -->';

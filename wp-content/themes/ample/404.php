@@ -20,7 +20,7 @@
                   <div class="page-content">
 
                      <header class="page-header">
-                        <h1 class="page-title"><?php _e( 'Oops! That page can&rsquo;t be found.', 'ample' ); ?></h1>
+                        <h2 class="page-title"><?php _e( 'Oops! That page can&rsquo;t be found.', 'ample' ); ?></h2>
                      </header>
 
                      <?php if ( ! dynamic_sidebar( 'ample_error_404_page_sidebar' ) ) : ?>

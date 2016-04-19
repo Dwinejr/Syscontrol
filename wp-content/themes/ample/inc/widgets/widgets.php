@@ -110,10 +110,10 @@ function ample_widgets_init() {
  * Featured recent work widget to show pages.
  */
 class ample_service_widget extends WP_Widget {
-   function ample_service_widget() {
+   function __construct() {
       $widget_ops = array( 'classname' => 'widget_service_block', 'description' => __( 'Show your some pages as services.', 'ample' ) );
       $control_ops = array( 'width' => 200, 'height' =>250 );
-      parent::WP_Widget( false, $name = __( 'TG: Service Widget', 'ample' ), $widget_ops, $control_ops);
+      parent::__construct( false, $name = __( 'TG: Service Widget', 'ample' ), $widget_ops, $control_ops);
    }
 
    function form( $instance ) {
@@ -281,10 +281,10 @@ class ample_service_widget extends WP_Widget {
  */
 class ample_portfolio_widget extends WP_Widget {
 
-   function ample_portfolio_widget() {
+   function __construct() {
       $widget_ops = array( 'classname' => 'widget_portfolio_block', 'description' => __( 'Display portfolio by using specific category', 'ample') );
       $control_ops = array( 'width' => 200, 'height' =>250 );
-      parent::WP_Widget( false,$name= __( 'TG: Portfolio', 'ample' ), $widget_ops);
+      parent::__construct( false,$name= __( 'TG: Portfolio', 'ample' ), $widget_ops);
    }
 
    function form( $instance ) {
@@ -483,10 +483,10 @@ class ample_portfolio_widget extends WP_Widget {
  */
 class ample_featured_posts_widget extends WP_Widget {
 
-   function ample_featured_posts_widget() {
+   function __construct() {
       $widget_ops = array( 'classname' => 'widget_featured_posts_block', 'description' => __( 'Display latest posts or posts of specific category', 'ample') );
       $control_ops = array( 'width' => 200, 'height' =>250 );
-      parent::WP_Widget( false,$name= __( 'TG: Featured Posts', 'ample' ),$widget_ops);
+      parent::__construct( false,$name= __( 'TG: Featured Posts', 'ample' ),$widget_ops);
    }
 
    function form( $instance ) {
@@ -615,7 +615,7 @@ class ample_featured_posts_widget extends WP_Widget {
                      <?php the_excerpt(); ?>
                   </div>
                   <div class="read-btn">
-                     <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute();?>"><?php _e(' Read more', 'ample' ); ?></a>
+                     <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute();?>"><?php _e('Read more', 'ample' ); ?></a>
                   </div>
                </div>
             </div>
@@ -636,10 +636,10 @@ class ample_featured_posts_widget extends WP_Widget {
  * Featured call to action widget.
  */
 class ample_call_to_action_widget extends WP_Widget {
-   function ample_call_to_action_widget() {
+   function __construct() {
       $widget_ops = array( 'classname' => 'widget_call_to_action_block', 'description' => __( 'Use this widget to show the call to action section.', 'ample' ) );
       $control_ops = array( 'width' => 200, 'height' =>250 );
-      parent::WP_Widget( false, $name = __( 'TG: Call To Action Widget', 'ample' ), $widget_ops, $control_ops);
+      parent::__construct( false, $name = __( 'TG: Call To Action Widget', 'ample' ), $widget_ops, $control_ops);
    }
 
    function form( $instance ) {

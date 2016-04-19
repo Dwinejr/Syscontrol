@@ -38,12 +38,12 @@ function esteem_scripts_styles_method() {
 	/**
 	 * Register JQuery cycle js file for slider.
 	 */
-	wp_register_script( 'jquery_cycle', ESTEEM_JS_URL . '/jquery.cycle.all.min.js', array( 'jquery' ), '2.9999.5', true );
+	wp_register_script( 'jquery_cycle', ESTEEM_JS_URL . '/jquery.cycle.all.min.js', array( 'jquery' ), '3.0.3', true );
 
 	/**
 	 * Enqueue Slider setup js file.
 	 */
-	if( of_get_option( 'esteem_activate_slider', '0' ) == '1' ) {
+	if( get_theme_mod( 'esteem_activate_slider', '0' ) == '1' ) {
 		if ( is_home() || is_front_page() ) {
 			wp_enqueue_script( 'esteem_slider', ESTEEM_JS_URL . '/esteem-slider-setting.js', array( 'jquery_cycle' ), false, true );
 
@@ -74,7 +74,6 @@ add_action('admin_print_styles', 'esteem_admin_styles');
  */
 function esteem_admin_styles() {
 	wp_enqueue_style( 'esteem-fontawesome', get_template_directory_uri().'/fontawesome/css/font-awesome.css', array(), '3.2.1' );
-	wp_enqueue_style( 'esteem_admin_style', ESTEEM_ADMIN_CSS_URL. '/admin.css' );
 }
 
 /****************************************************************************************/
@@ -94,10 +93,10 @@ function esteem_sidebar_select() {
 	}
 
 	if( empty( $layout_meta ) || is_archive() || is_search() ) { $layout_meta = 'default_layout'; }
-	$esteem_default_layout = of_get_option( 'esteem_default_layout', 'right_sidebar' );
+	$esteem_default_layout = get_theme_mod( 'esteem_default_layout', 'right_sidebar' );
 
-	$esteem_default_page_layout = of_get_option( 'esteem_pages_default_layout', 'right_sidebar' );
-	$esteem_default_post_layout = of_get_option( 'esteem_single_posts_default_layout', 'right_sidebar' );
+	$esteem_default_page_layout = get_theme_mod( 'esteem_pages_default_layout', 'right_sidebar' );
+	$esteem_default_post_layout = get_theme_mod( 'esteem_single_posts_default_layout', 'right_sidebar' );
 
 	if( $layout_meta == 'default_layout' ) {
 		if( is_page() || is_home() ) {
@@ -133,10 +132,10 @@ function esteem_body_class( $classes ) {
 	}
 
 	if( empty( $layout_meta ) || is_archive() || is_search() ) { $layout_meta = 'default_layout'; }
-	$esteem_default_layout = of_get_option( 'esteem_default_layout', 'right_sidebar' );
+	$esteem_default_layout = get_theme_mod( 'esteem_default_layout', 'right_sidebar' );
 
-	$esteem_default_page_layout = of_get_option( 'esteem_pages_default_layout', 'right_sidebar' );
-	$esteem_default_post_layout = of_get_option( 'esteem_single_posts_default_layout', 'right_sidebar' );
+	$esteem_default_page_layout = get_theme_mod( 'esteem_pages_default_layout', 'right_sidebar' );
+	$esteem_default_post_layout = get_theme_mod( 'esteem_single_posts_default_layout', 'right_sidebar' );
 
 	if( $layout_meta == 'default_layout' ) {
 		if( is_page() || is_home() ) {
@@ -162,14 +161,14 @@ function esteem_body_class( $classes ) {
 	elseif( $layout_meta == 'no_sidebar_content_centered' ) { $classes[] = 'no-sidebar'; }
 
 
-	if ( of_get_option( 'esteem_posts_page_display_type', 'full_content' ) == 'small_image' ) {
+	if ( get_theme_mod( 'esteem_posts_page_display_type', 'full_content' ) == 'small_image' ) {
 		$classes[] = 'blog-medium';
 	}
-	if ( of_get_option( 'esteem_posts_page_display_type', 'full_content' ) == 'large_image' ) {
+	if ( get_theme_mod( 'esteem_posts_page_display_type', 'full_content' ) == 'large_image' ) {
 		$classes[] = 'blog-large';
 	}
 
-	if( of_get_option( 'esteem_site_layout', 'box' ) == 'wide' ) {
+	if( get_theme_mod( 'esteem_site_layout', 'box' ) == 'wide' ) {
 		$classes[] = 'wide';
 	}
 
@@ -203,8 +202,8 @@ add_action( 'wp_head', 'esteem_favicon' );
  * Fav icon for the site
  */
 function esteem_favicon() {
-	if ( of_get_option( 'esteem_activate_favicon', '0' ) == '1' ) {
-		$esteem_favicon = of_get_option( 'esteem_favicon', '' );
+	if ( get_theme_mod( 'esteem_activate_favicon', '0' ) == '1' ) {
+		$esteem_favicon = get_theme_mod( 'esteem_favicon', '' );
 		$esteem_favicon_output = '';
 		if ( !empty( $esteem_favicon ) ) {
 			$esteem_favicon_output .= '<link rel="shortcut icon" href="'.esc_url( $esteem_favicon ).'" type="image/x-icon" />';
@@ -223,7 +222,7 @@ function esteem_custom_css() {
 
 	$esteem_internal_css = '';
 
-	$primary_color = of_get_option( 'esteem_primary_color', '#ED564B' );
+	$primary_color = get_theme_mod( 'esteem_primary_color', '#ED564B' );
 	if( $primary_color != '#ED564B' ) {
 		$esteem_internal_css .= 'blockquote{border-left: 3px solid ' .$primary_color.'}button,html input[type="button"],input[type="reset"],input[type="submit"],#slider-title a{background:'.$primary_color.'}a,a:visited,a:hover,a:focus,a:active,.main-navigation li:hover > a,.main-navigation li.current_page_item > a,.main-navigation li.current-menu-item > a,.main-navigation li.current-menu-ancestor > a,#site-title a span,#site-title a:hover,#site-title a:focus,#site-title a:active,#controllers a:hover, #controllers a.active,.widget ul li a:hover,.widget ul li a:hover:before,.services-block .read-more:hover,.service-image-wrap,.service-title a:hover,.entry-meta a:hover,.entry-title a:hover,.search-wrap button:before,#site-generator a:hover, #colophon .widget a:hover,.menu-toggle:before{color: '.$primary_color.'}.main-navigation ul ul {border-top: 4px solid'.$primary_color.'}#controllers a:hover, #controllers a.active,#promo-box,.fancy-tab,.call-to-action-button,.readmore-wrap,.page-title-bar,.default-wp-page .previous a:hover, .default-wp-page .next a:hover{ background-color: '.$primary_color.'}#secondary .widget-title span, #colophon .widget-title span{ border-bottom: 2px solid '.$primary_color.'}
 		.services-block .read-more:hover{border: 1px solid '.$primary_color.'}.service-border{ border: 3px solid '.$primary_color.'}
@@ -236,7 +235,7 @@ function esteem_custom_css() {
 		<?php
 	}
 
-	$esteem_custom_css = of_get_option( 'esteem_custom_css', '' );
+	$esteem_custom_css = get_theme_mod( 'esteem_custom_css', '' );
 	if( !empty( $esteem_custom_css ) ) {
 		?>
 		<style type="text/css"><?php echo $esteem_custom_css; ?></style>
@@ -272,13 +271,13 @@ if ( ! function_exists( 'esteem_posts_listing_display_type_select' ) ) :
  * Function to select the posts listing display type
  */
 function esteem_posts_listing_display_type_select() {
-	if ( of_get_option( 'esteem_posts_page_display_type', 'full_content' ) == 'large_image' ) {
+	if ( get_theme_mod( 'esteem_posts_page_display_type', 'full_content' ) == 'large_image' ) {
 		$format = 'blog-image-large';
 	}
-	elseif ( of_get_option( 'esteem_posts_page_display_type', 'full_content' ) == 'small_image' ) {
+	elseif ( get_theme_mod( 'esteem_posts_page_display_type', 'full_content' ) == 'small_image' ) {
 		$format = 'blog-image-medium';
 	}
-	elseif ( of_get_option( 'esteem_posts_page_display_type', 'full_content' ) == 'full_content' ) {
+	elseif ( get_theme_mod( 'esteem_posts_page_display_type', 'full_content' ) == 'full_content' ) {
 		$format = 'blog-full-content';
 	}
 	else {
@@ -321,4 +320,52 @@ function esteem_add_mod_hatom_data($content) {
    return $content;
 }
 add_filter('the_content', 'esteem_add_mod_hatom_data');
+
+/****************************************************************************************/
+
+if ( ! function_exists( 'esteem_entry_meta' ) ) :
+/**
+ * Shows meta information of post.
+ */
+function esteem_entry_meta() {
+   if ( 'post' == get_post_type() ) :
+      echo '<div class="entry-meta-bar clearfix">';
+      echo '<div class="entry-meta clearfix">';
+      ?>
+
+      <span class="icon-user vcard author"><a class="url fn n" href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php the_author(); ?></a></span>
+
+      <?php
+      $time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
+      if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
+         $time_string .= '<time class="updated" datetime="%3$s">%4$s</time>';
+      }
+      $time_string = sprintf( $time_string,
+         esc_attr( get_the_date( 'c' ) ),
+         esc_html( get_the_date() ),
+         esc_attr( get_the_modified_date( 'c' ) ),
+         esc_html( get_the_modified_date() )
+      );
+      printf( __( '<span class="icon-time"><a href="%1$s" title="%2$s" rel="bookmark">%3$s</a></span>', 'esteem' ),
+         esc_url( get_permalink() ),
+         esc_attr( get_the_time() ),
+         $time_string
+      ); ?>
+
+      <?php if( has_category() ) { ?>
+         <span class="icon-tag"><?php the_category(', '); ?></span>
+      <?php } ?>
+
+      <?php if ( comments_open() ) { ?>
+         <span class="icon-comment-alt"><?php comments_popup_link( __( 'No Comments', 'esteem' ), __( '1 Comment', 'esteem' ), __( '% Comments', 'esteem' ), '', __( 'Comments Off', 'esteem' ) ); ?></span>
+      <?php } ?>
+
+      <?php edit_post_link( __( 'Edit', 'esteem' ), '<span class="icon-pencil">', '</span>' ); ?>
+
+      <?php
+      echo '</div>';
+      echo '</div>';
+   endif;
+}
+endif;
 ?>

@@ -7,29 +7,30 @@ var deslist={
     _create_tinyMCE_options(deslist);
 })();
 function ebs_return_html_deslist(pluginObj){
-    var form = jQuery('<div id="'+pluginObj.id+'" class="oscitas-container" title="'+pluginObj.title+'"><table id="oscitas-table" class="form-table">\
+    var form = jQuery('<div id="'+pluginObj.id+'" class="oscitas-container" title="'+pluginObj.title+'"><table id="oscitas-table" class="form-table ebs-default-options">\
 			<tr>\
-				<th><label for="oscitas-line">No of List Item</label></th>\
-				<td><input type="text" name="line" id="oscitas-deslist-item" value="3"/><br /><small>Enter a numeric value</small>\
+				<th><label for="oscitas-line">'+ebsjstrans.noof+' '+ebsjstrans.list+' '+ebsjstrans.item+'</label></th>\
+				<td><input type="text" name="line" id="oscitas-deslist-item" value="3"/><br /><small>'+ebsjstrans.enternumval+'</small>\
 				</td>\
 			</tr>\
                 <tr>\
-                    <th><label for="oscitas-deslist-style">List style</label></th>\
+                    <th><label for="oscitas-deslist-style">'+ebsjstrans.list+' '+ebsjstrans.style+'</label></th>\
                     <td><select name="type" id="oscitas-deslist-style">\
-                        <option value="">Default</option>\
-                        <option value="dl-horizontal">Horizontal</option>\
+                        <option value="">'+ebsjstrans.default+'</option>\
+                        <option value="dl-horizontal">'+ebsjstrans.horizontal+'</option>\
                     </select><br />\
                     </td>\
                 </tr>\
                         <tr>\
-				<th><label for="oscitas-deslist-class">Custom Class:</label></th>\
+				<th><label for="oscitas-deslist-class">'+ebsjstrans.customclass+':</label></th>\
 				<td><input type="text" name="line" id="oscitas-deslist-class" value=""/><br />\
 				</td>\
 			</tr>\
 		</table>\
-		<p class="submit">\
-			<input type="button" id="oscitas-deslist-submit" class="button-primary" value="Insert List" name="submit" />\
+		<p class="submit ebs-default-options">\
+			<input type="button" id="oscitas-deslist-submit" class="button-primary" value="'+ebsjstrans.insert+' '+ebsjstrans.list+'" name="submit" />\
 		</p>\
+		<div class="pro-version-image aligncenter" style="display: none;"><img src="'+ebs_url+'shortcode/deslist/screenshot.jpg"/></div>\
 		</div>');
     return form;
 }
@@ -70,7 +71,7 @@ function create_oscitas_deslist(pluginObj){
 
         shortcode += ']<br/>';
         for(var i=1;i<=deslist;i++){
-            shortcode +='['+$ebs_prefix+'dlitem heading="Heading '+i+'"]Description '+i+'[/'+$ebs_prefix+'dlitem]<br/>'
+            shortcode +='['+$ebs_prefix+'dlitem heading="Heading '+i+'"]'+ebsjstrans.description+' '+i+'[/'+$ebs_prefix+'dlitem]<br/>'
         }
         shortcode +='[/'+$ebs_prefix+'dl]';
 			

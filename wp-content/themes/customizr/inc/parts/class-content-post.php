@@ -42,6 +42,9 @@ if ( ! class_exists( 'TC_post' ) ) :
       add_action( '__loop'              , array( $this , 'tc_post_content' ));
       //posts parts actions
       add_action( '__after_content'     , array( $this , 'tc_post_footer' ));
+      //smartload help block
+      add_filter( 'the_content'         , array( $this, 'tc_maybe_display_img_smartload_help') , PHP_INT_MAX );
+
     }
 
 
@@ -53,6 +56,9 @@ if ( ! class_exists( 'TC_post' ) ) :
     * @since Customizr 3.2.0
     */
     function tc_set_single_post_thumbnail_hooks() {
+      if ( $this -> tc_single_post_display_controller() )
+        add_action( '__before_content'        , array( $this, 'tc_maybe_display_featured_image_help') );
+
       //__before_main_wrapper, 200
       //__before_content 0
       //__before_content 20
@@ -68,8 +74,6 @@ if ( ! class_exists( 'TC_post' ) ) :
       //Set thumb shape with customizer options (since 3.2.0)
       add_filter( 'tc_post_thumb_wrapper'      , array( $this , 'tc_set_thumb_shape'), 10 , 2 );
     }
-
-
 
 
 
@@ -182,6 +186,54 @@ if ( ! class_exists( 'TC_post' ) ) :
     }
 
 
+    /***************************
+    * SINGLE POST THUMBNAIL HELP VIEW
+    ****************************/
+    /**
+    * Displays a help block about featured images for single posts
+    * hook : __before_content
+    * @since Customizr 3.4
+    */
+    function tc_maybe_display_featured_image_help() {
+      if ( ! TC_placeholders::tc_is_thumbnail_help_on() )
+        return;
+      ?>
+      <div class="tc-placeholder-wrap tc-thumbnail-help">
+        <?php
+          printf('<p><strong>%1$s</strong></p><p>%2$s</p><p>%3$s</p>',
+              __( "You can display your post's featured image here if you have set one.", "customizr" ),
+              sprintf( __("%s to display a featured image here.", "customizr"),
+                sprintf( '<strong><a href="%1$s" title="%2$s">%2$s</a></strong>', TC_utils::tc_get_customizer_url( array( "section" => "single_posts_sec") ), __( "Jump to the customizer now", "customizr") )
+              ),
+              sprintf( __( "Don't know how to set a featured image to a post? Learn how in the %s.", "customizr" ),
+                sprintf('<a href="%1$s" title="%2$s" target="_blank">%2$s</a><span class="tc-external"></span>' , esc_url('codex.wordpress.org/Post_Thumbnails#Setting_a_Post_Thumbnail'), __("WordPress documentation" , "customizr" ) )
+              )
+          );
+          printf('<a class="tc-dismiss-notice" href="#" title="%1$s">%1$s x</a>',
+                __( 'dismiss notice', 'customizr')
+          );
+        ?>
+      </div>
+      <?php
+    }
+
+    /***************************
+    * SINGLE POST IMG SMARTLOAD HELP VIEW
+    ****************************/
+    /**
+    * Displays a help block about images smartload for single posts prepended to the content
+    * hook : the_content
+    * @since Customizr 3.4+
+    */
+    function tc_maybe_display_img_smartload_help( $the_content ) {
+      if ( ! ( $this -> tc_single_post_display_controller()  &&  in_the_loop() && TC_placeholders::tc_is_img_smartload_help_on( $the_content ) ) )
+        return $the_content;
+
+      return TC_placeholders::tc_get_smartload_help_block() . $the_content;
+    }
+
+
+
 
     /******************************
     * SETTERS / HELPERS / CALLBACKS
@@ -237,7 +289,7 @@ if ( ! class_exists( 'TC_post' ) ) :
     * @since Customizr 3.2.0
     */
     function tc_set_thumb_shape( $thumb_wrapper, $thumb_img ) {
-      return sprintf('<div class="%4$s"><a class="tc-rectangular-thumb" href="%1$s" title="%2s">%3$s</a></div>',
+      return sprintf('<div class="%4$s"><a class="tc-rectangular-thumb" href="%1$s" title="%2$s">%3$s</a></div>',
             get_permalink( get_the_ID() ),
             esc_attr( strip_tags( get_the_title( get_the_ID() ) ) ),
             $thumb_img,

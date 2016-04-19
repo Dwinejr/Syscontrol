@@ -12,7 +12,6 @@ Resources packed within the theme.
 * Image used on screenshot is our own creation[licensed under GPL] which also makes use of this image http://www.pexels.com/photo/922/ which is under CC0 License.
 * HTML5 Shiv @afarkas @jdalton @jon_neal @rem | MIT/GPL2 Licensed
 * The script jquery.cycle.all.js is dual licensed under GPL & MIT
-* Options Framework by WP Theming licensed under the GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html)
 * Other custom js files are our own creation and is licensed under the same license as this theme.
 
 All other resources and theme elements are licensed under the [GNU GPL](http://www.gnu.org/licenses/old-licenses/gpl-2.0.html), version 2 or later.
@@ -42,6 +41,39 @@ and we will include it within the theme from next version update.
 /**********************************************************/
 
 == CHANGE LOG ==
+= Version 1.3.1 =
+* Content width adjusted according to the layout choosed
+* Backward compatibility for WordPress title removed
+
+= Version 1.3.0 =
+* SEO Optimization
+
+= Version 1.2.9 =
+* Updated HTML5Shiv script to the latest version 3.7.3
+
+= Version 1.2.8 =
+* Theme Options migrated to customizer as per new WordPress theme review guidelines.
+
+= Version 1.2.7 =
+* Minor Bug Fixed
+* WordPress default gallery support added.
+
+= Version 1.2.6 =
+* Removed deprecated function for WP_Widget class and used the __construct() instead as per WordPress 4.3
+
+= Version 1.2.5 =
+* Testimonial widget issue fixed.
+* Function is used to call Entry Meta for code minification.
+
+= Version 1.2.4 =
+* Small adjustment in Breadcrumb NavXT plugin support code.
+* Added HTML5 Markup theme support.
+* Added the updated class for Google Structured Data.
+
+= Version 1.2.3 =
+* JQuery Cycle js updated to latest version(3.0.3).
+* Option added to open TG: Call to Action widget button in new tab on click.
+
 = Version 1.2.2 =
 * Custom CSS option sanitized using wp_filter_nohtml_kses().
 * Adding the support for the entry-title tag for Google Rich Snippets in single post view.

@@ -56,6 +56,8 @@ class TC_post_list {
   * @since Customizr 3.2.0
   */
   function tc_set_early_hooks() {
+    //Filter home/blog postsa (priority 9 is to make it act before the grid hook for expanded post)
+    add_action ( 'pre_get_posts'         , array( $this , 'tc_filter_home_blog_posts_by_tax' ), 9);
     //Include attachments in search results
     add_action ( 'pre_get_posts'         , array( $this , 'tc_include_attachments_in_search' ));
     //Include all post types in archive pages
@@ -75,6 +77,9 @@ class TC_post_list {
       return;
     //displays the article with filtered layout : content + thumbnail
     add_action ( '__loop'               , array( $this , 'tc_prepare_section_view') );
+    
+    //page help blocks
+    add_filter( '__before_loop'         , array( $this , 'tc_maybe_display_img_smartload_help') );
 
     //based on customizer user options
     add_filter( 'tc_post_list_layout'   , array( $this , 'tc_set_post_list_layout') );
@@ -234,7 +239,7 @@ class TC_post_list {
       $_sub_class = 'entry-content';
       $_content   = '<p class="format-icon"></p>';
     }
-    elseif ( in_array( get_post_format(), array( 'quote', 'status', 'link', 'aside' ) ) )
+    elseif ( in_array( get_post_format(), array( 'quote', 'status', 'link', 'aside', 'video' ) ) )
     {
       $_sub_class = sprintf( 'entry-content %s' , $_icon_class );
       $_content   = sprintf( '%1$s%2$s',
@@ -345,8 +350,20 @@ class TC_post_list {
       return;
 
     //filter the post types to include, they must be public and not excluded from search
-    $post_types     = get_post_types( array( 'public' => true, 'exclude_from_search' => false) );
-
+    //we also exclude the built-in types, to exclude pages and attachments, we'll add standard posts later
+    $post_types         = get_post_types( array( 'public' => true, 'exclude_from_search' => false, '_builtin' => false) );
+    
+    //add standard posts
+    $post_types['post'] = 'post';
+    if ( $query -> is_search ){
+      // add standard pages in search results => new wp behavior
+      $post_types['page'] = 'page';
+      // allow attachments to be included in search results by tc_include_attachments_in_search method
+      if ( apply_filters( 'tc_include_attachments_in_search_results' , false ) )      
+        $post_types['attachment'] = 'attachment';    
+    }
+    
+    // add standard pages in search results
     $query->set('post_type', $post_types );
   }
 
@@ -360,7 +377,7 @@ class TC_post_list {
   */
   function tc_include_attachments_in_search( $query ) {
       if (! is_search() || ! apply_filters( 'tc_include_attachments_in_search_results' , false ) )
-        return $query;
+        return;
 
       // add post status 'inherit'
       $post_status = $query->get( 'post_status' );
@@ -370,11 +387,36 @@ class TC_post_list {
         $post_status[] = 'inherit';
 
       $query->set( 'post_status', $post_status );
-
-      return $query;
   }
 
+  /**
+  * hook : pre_get_posts
+  * Filter home/blog posts by tax: cat
+  * @return modified query object
+  * @package Customizr
+  * @since Customizr 3.4.10
+  */
+  function tc_filter_home_blog_posts_by_tax( $query ) {
+      // when we have to filter?
+      // in home and blog page
+      if (
+        ! $query->is_main_query()
+        || ! ( ( is_home() && 'posts' == get_option('show_on_front') ) || $query->is_posts_page )
+      )
+        return;
 
+     // categories
+     // we have to ignore sticky posts (do not prepend them) 
+     // disable grid sticky post expansion
+     $cats = TC_utils::$inst -> tc_opt('tc_blog_restrict_by_cat');
+     $cats = array_filter( $cats, array( TC_utils::$inst , 'tc_category_id_exists' ) ); 
+     
+     if ( is_array( $cats ) && ! empty( $cats ) ){
+         $query->set('category__in', $cats );     
+         $query->set('ignore_sticky_posts', 1 );     
+         add_filter('tc_grid_expand_featured', '__return_false');
+     }
+  }
   /**
   * Callback of filter post_class
   * @return  array() of classes
@@ -406,7 +448,9 @@ class TC_post_list {
   */
   function tc_set_post_list_layout( $_layout ) {
     $_position                  = esc_attr( TC_utils::$inst->tc_opt( 'tc_post_list_thumb_position' ) );
-    $_layout['alternate']        = ( 0 == esc_attr( TC_utils::$inst->tc_opt( 'tc_post_list_thumb_alternate' ) ) ) ? false : true;
+    //since 3.4.16 the alternate layout is not available when the position is top or bottom
+    $_layout['alternate']        = ( 0 == esc_attr( TC_utils::$inst->tc_opt( 'tc_post_list_thumb_alternate' ) ) 
+                                   || in_array( $_position, array( 'top', 'bottom') ) ) ? false : true;
     $_layout['show_thumb_first'] = ( 'left' == $_position || 'top' == $_position ) ? true : false;
     $_layout['content']          = ( 'left' == $_position || 'right' == $_position ) ? $_layout['content'] : 'span12';
     $_layout['thumb']            = ( 'top' == $_position || 'bottom' == $_position ) ? 'span12' : $_layout['thumb'];
@@ -512,6 +556,22 @@ class TC_post_list {
   */
   function tc_add_support_for_shortcode_special_chars( $_content ) {
     return str_replace( ']]>', ']]&gt;', apply_filters( 'the_content', $_content ) );
+  }
+
+
+  /***************************
+  * LIST OF POSTS IMG SMARTLOAD HELP VIEW
+  ****************************/
+  /**
+  * Displays a help block about images smartload for list of posts before the actual list
+  * hook : __before_loop
+  * @since Customizr 3.4+
+  */
+  function tc_maybe_display_img_smartload_help( $the_content ) {
+    if ( ! ( $this -> tc_post_list_controller() && TC_placeholders::tc_is_img_smartload_help_on( $text = '', $min_img_num = 0 ) ) )
+      return;
+    
+    TC_placeholders::tc_get_smartload_help_block( $echo = true );
   }
 
 }//end of class

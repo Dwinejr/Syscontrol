@@ -8,36 +8,38 @@ var badge={
 })();
 
 function ebs_return_html_badge(pluginObj){
-    var form = jQuery('<div id="'+pluginObj.id+'" class="oscitas-container" title="'+pluginObj.title+'"><table id="oscitas-table" class="form-table">\
+    var form = jQuery('<div id="'+pluginObj.id+'" class="oscitas-container" title="'+pluginObj.title+'"><table id="oscitas-table" class="form-table ebs-default-options">\
 			 <tr>\
-        <th><label for="oscitas-badge-bgcolor">\Background Color</label></th>\
+        <th><label for="oscitas-badge-bgcolor">'+ebsjstrans.bgcolor+'</label></th>\
         <td><input type="text" class="color" name="bgcolor" id="oscitas-badge-bgcolor" value="">\
             </td>\
         </tr>\
         <tr>\
-        <th><label for="oscitas-badge-color">Color</label></th>\
+        <th><label for="oscitas-badge-color">'+ebsjstrans.color+'</label></th>\
         <td><input type="text" class="color" name="color" id="oscitas-badge-color" value="">\
       </td>\
     </tr>\
     <tr>\
-        <th><label for="oscitas-badge-value">Content</label></th>\
+        <th><label for="oscitas-badge-value">'+ebsjstrans.content+'</label></th>\
         <td><input type="text" name="value" id="oscitas-badge-value" value="">\
         </tr>\
         <tr>\
-            <th><label for="oscitas-badge-float_right">Float Right</label></th>\
+            <th><label for="oscitas-badge-float_right">'+ebsjstrans.floatright+'</label></th>\
             <td><input type="checkbox" name="float_right" id="oscitas-badge-float_right" value="true">\
           </td>\
         </tr>\
         <tr>\
-            <th><label for="oscitas-badge-class">Custom Class</label></th>\
+            <th><label for="oscitas-badge-class">'+ebsjstrans.customclass+'</label></th>\
             <td><input type="text" name="class" id="oscitas-badge-class" value=""/>\
            </td>\
         </tr>\
 		</table>\
-		<p class="submit">\
-			<input type="button" id="oscitas-badge-submit" class="button-primary" value="Insert Badge" name="submit" />\
+		<p class="submit ebs-default-options">\
+			<input type="button" id="oscitas-badge-submit" class="button-primary" value="'+ebsjstrans.insert+' '+ebsjstrans.badge+'" name="submit" />\
 		</p>\
-		</div>');
+		<div class="pro-version-image aligncenter" style="display: none;"><img src="'+ebs_url+'shortcode/badge/screenshot.jpg"/></div>\
+		</div>\
+		');
     return form;
 
 }

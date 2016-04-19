@@ -17,7 +17,6 @@ Resources packed within the theme.
    http://pixabay.com/en/office-freelancer-computer-business-583839/
 * The BxSlider is licensed under MIT link:
    https://github.com/stevenwanderski/bxslider-4
-* Options Framework by WP Theming licensed under the GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html)
 * Other custom js files are our own creation and is licensed under the same license as this theme.
 
 All other resources and theme elements are licensed under the [GNU GPL](http://www.gnu.org/licenses/gpl-3.0.txt), version 3
@@ -53,6 +52,45 @@ and we will include it within the theme from next version update.
 /**********************************************************/
 
 == CHANGE LOG ==
+= Version 1.1.2 =
+* Tweaks - Theme information is properly organized in Customize panel.
+* Feature - Primary Color hover effect is added.
+* Tweaks - Language file updated.
+* Feature - Theme is now compatible with WooCommerce.
+
+= Version 1.1.1 =
+* Content width adjusted according to the layout choosed.
+* Removed backward compatibility for WordPress title tag.
+* Fontawesome icons updated to version 4.5.0
+
+= Version 1.1.0 =
+* Team descriptions is added in archive page.
+* Some fixes for better SEO.
+
+= Version 1.0.9 =
+* Options to Hide categories in Blog page issue is fixed.
+* Fontawesome icons updated to 4.4.0
+
+= Version 1.0.8 =
+* Theme Options migrated to customizer as per new WordPress theme review guidelines.
+
+= Version 1.0.7 =
+* WordPress default gallery alignment issue fixed. Also, responsiveness adjustment done for WordPress default gallery.
+
+= Version 1.0.6 =
+* Removed deprecated function for WP_Widget class and used the __construct() instead as per WordPress 4.3
+
+= Version 1.0.5 =
+* Styling adjustment for single post navigation is fixed.
+* Menu alignment in small device (when header Text and Logo are not used) is fixed.
+* Translation issue of Read more is fixed.
+* Slider Navigation issue in chrome fixed.
+
+
+= Version 1.0.4 =
+* Added the update class for Google Structured Data.
+* Small adjustment in Breadcrumb NavXT plugin support code.
+
 = Version 1.0.3 =
 * Default WordPress Gallery supported.
 

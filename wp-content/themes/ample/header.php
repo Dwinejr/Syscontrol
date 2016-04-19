@@ -23,31 +23,53 @@ wp_head();
 
 <body <?php body_class(); ?>>
    <div id="page" class="hfeed site">
-   <header id="masthead" class="site-header" role="banner">
+   <?php
+      if ( ample_option( 'ample_show_header_logo_text', 'text_only' ) == 'none' ) {
+         $header_extra_class = 'logo-disable';
+      } else {
+         $header_extra_class = '';
+      }
+   ?>
+   <header id="masthead" class="site-header <?php echo $header_extra_class; ?>" role="banner">
       <div class="header">
-         <?php if( of_get_option( 'ample_header_image_position', 'above' ) == 'above' ) { ample_render_header_image(); } ?>
+         <?php if( ample_option( 'ample_header_image_position', 'above' ) == 'above' ) { ample_render_header_image(); } ?>
 
          <div class="main-head-wrap inner-wrap clearfix">
             <div id="header-left-section">
-               <?php if( ( of_get_option( 'ample_show_header_logo_text', 'text_only' ) == 'both' || of_get_option( 'ample_show_header_logo_text', 'text_only' ) == 'logo_only' ) && of_get_option( 'ample_header_logo_image', '' ) != '' ) { ?>
+               <?php if( ( ample_option( 'ample_show_header_logo_text', 'text_only' ) == 'both' || ample_option( 'ample_show_header_logo_text', 'text_only' ) == 'logo_only' ) && ample_option( 'ample_header_logo_image', '' ) != '' ) { ?>
 
                   <div id="header-logo-image">
-                     <a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><img src="<?php echo esc_url(of_get_option( 'ample_header_logo_image', '' ) ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>"></a>
+                     <a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><img src="<?php echo esc_url(ample_option( 'ample_header_logo_image', '' ) ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>"></a>
                   </div>
                <?php }
-               if( of_get_option( 'ample_show_header_logo_text', 'text_only' ) == 'both' || of_get_option( 'ample_show_header_logo_text', 'text_only' ) == 'text_only' ) { ?>
-                  <div id="header-text">
+
+               $screen_reader = '';
+               if ( ( ample_option( 'ample_show_header_logo_text', 'text_only' ) == 'logo_only' || ample_option( 'ample_show_header_logo_text', 'text_only' ) == 'none' ) ) {
+                  $screen_reader = 'screen-reader-text';
+               }
+               ?>
+               <div id="header-text" class="<?php echo $screen_reader; ?>">
+               <?php
+                  if ( is_front_page() || is_home() ) : ?>
                      <h1 id="site-title">
                         <a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
                      </h1>
-                     <h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
-                  </div>
-               <?php } ?>
-            </div>
+                  <?php else : ?>
+                     <h3 id="site-title">
+                        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+                     </h3>
+                  <?php endif;
+                  $description = get_bloginfo( 'description', 'display' );
+                  if ( $description || is_customize_preview() ) : ?>
+                     <p id="site-description"><?php echo $description; ?></p>
+                  <?php endif;
+               ?>
+               </div>
+            </div><!-- #header-left-section -->
 
             <div id="header-right-section">
                <nav id="site-navigation" class="main-navigation" role="navigation">
-                  <h3 class="menu-toggle"></h3>
+                  <p class="menu-toggle"></p>
                   <?php
                   if ( has_nav_menu( 'primary' ) ) {
                      wp_nav_menu(
@@ -68,12 +90,12 @@ wp_head();
                </div>
    	      </div>
    	   </div><!-- .main-head-wrap -->
-         <?php if( of_get_option( 'ample_header_image_position', 'above' ) == 'below' ) { ample_render_header_image(); } ?>
+         <?php if( ample_option( 'ample_header_image_position', 'above' ) == 'below' ) { ample_render_header_image(); } ?>
   	   </div><!-- .header -->
 	</header><!-- end of header -->
    <div class="main-wrapper">
 
-      <?php if( of_get_option('ample_activate_slider' , '0') == '1' ) {
+      <?php if( ample_option('ample_activate_slider' , '0') == '1' ) {
          if( is_front_page() ) {
             ample_featured_image_slider();
          }
@@ -83,7 +105,11 @@ wp_head();
          <div class="header-post-title-container clearfix">
             <div class="inner-wrap">
                <div class="post-title-wrapper">
+               <?php if ( is_home() ) : ?>
+                  <h2 class="header-post-title-class entry-title"><?php echo ample_header_title(); ?></h2>
+               <?php else : ?>
                   <h1 class="header-post-title-class entry-title"><?php echo ample_header_title(); ?></h1>
+               <?php endif; ?>
                </div>
                <?php if( function_exists( 'ample_breadcrumb' ) ) { ample_breadcrumb(); } ?>
             </div>

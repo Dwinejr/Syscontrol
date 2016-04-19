@@ -22,7 +22,8 @@
   var pluginName = 'imgSmartLoad',
       defaults = {
         load_all_images_on_first_scroll : false,
-        attribute : 'data-src',
+        attribute : [ 'data-src', 'data-srcset' ],
+        excludeImg : '',
         threshold : 200,
         fadeIn_options : { duration : 400 },
         delaySmartLoadEvent : 0
@@ -41,7 +42,8 @@
   //can access this.element and this.option
   Plugin.prototype.init = function () {
     var self        = this,
-        $_imgs   = $( 'img[' + this.options.attribute + ']' , this.element );
+        $_imgs   = $( 'img[' + this.options.attribute[0] + ']:not('+ this.options.excludeImg.join() +')' , this.element );
+
     this.increment  = 1;//used to wait a little bit after the first user scroll actions to trigger the timer
     this.timer      = 0;
 
@@ -117,18 +119,48 @@
   * replace src place holder by data-src attr val which should include the real src
   */
   Plugin.prototype._load_img = function( _img ) {
-    var $_img = $(_img),
-        _src  = $_img.attr( this.options.attribute ),
+    var $_img    = $(_img),
+        _src     = $_img.attr( this.options.attribute[0] ),
+        _src_set = $_img.attr( this.options.attribute[1] ),
         self = this;
 
     $_img.parent().addClass('smart-loading');
 
     $_img.unbind('load_img')
     .hide()
-    .removeAttr( this.options.attribute )
-    .attr('src' , _src )
+    //https://api.jquery.com/removeAttr/
+    //An attribute to remove; as of version 1.7, it can be a space-separated list of attributes.
+    //minimum supported wp version (3.4+) embeds jQuery 1.7.2
+    .removeAttr( this.options.attribute.join(' ') )
+    .attr( 'srcset' , _src_set )
+    .attr('src', _src )
     .load( function () {
-      $_img.fadeIn(self.options.fadeIn_options).addClass('tc-smart-loaded').trigger('smartload');
+      //prevent executing this twice on an already smartloaded img
+      if ( ! $_img.hasClass('tc-smart-loaded') )
+        $_img.fadeIn(self.options.fadeIn_options).addClass('tc-smart-loaded');
+
+      //Following would be executed twice if needed, as some browsers at the
+      //first execution of the load callback might still have not actually loaded the img
+
+      //jetpack's photon commpability (seems to be unneeded since jetpack 3.9.1)
+      //Honestly to me this makes no really sense but photon does it.
+      //Basically photon recalculates the image dimension and sets its
+      //width/height attribute once the image is smartloaded. Given the fact that those attributes are "needed" by the browser to assign the images a certain space so that when loaded the page doesn't "grow" it's height .. what's the point doing it so late?
+      if ( ( 'undefined' !== typeof $_img.attr('data-tcjp-recalc-dims')  ) && ( false !== $_img.attr('data-tcjp-recalc-dims') ) ) {
+        var _width  = $_img.originalWidth();
+            _height = $_img.originalHeight();
+
+        if ( 2 != _.size( _.filter( [ _width, _height ], function(num){ return _.isNumber( parseInt(num, 10) ) && num > 1; } ) ) )
+          return;
+
+        //From photon.js: Modify given image's markup so that devicepx-jetpack.js will act on the image and it won't be reprocessed by this script.
+        $_img.removeAttr( 'data-tcjp-recalc-dims scale' );
+
+        $_img.attr( 'width', _width );
+        $_img.attr( 'height', _height );
+      }
+
+      $_img.trigger('smartload');
     });//<= create a load() fn
     //http://stackoverflow.com/questions/1948672/how-to-tell-if-an-image-is-loaded-or-cached-in-jquery
     if ( $_img[0].complete )

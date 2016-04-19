@@ -4,7 +4,7 @@ Theme URI: http://themegrill.com/themes/ample/
 Author: ThemeGrill
 Author URI: http://themegrill.com
 Description: Ample is a multipurpose responsive WordPress theme made to help you create a beautiful professional looking site in no time. It has numerous built-in options to give your site the look that you want. Get free support at http://themegrill.com/support-forum/ and check the demo at http://demo.themegrill.com/ample/
-Version: 1.0.3
+Version: 1.1.2
 License: GNU General Public License, version 3 (GPLv3)
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
 Tags: light, white, three-columns, right-sidebar, left-sidebar, custom-header, custom-background, custom-menu, custom-colors, sticky-post, threaded-comments, translation-ready, featured-images, theme-options, responsive-layout
@@ -678,49 +678,49 @@ img#wpstats {
 .gallery-caption {
 }
 
-/* 
+/*
 ====> 9.2 WordPress Gallery Support
 --------------------------------------------------------------*/
 .gallery {
-   margin: 0 auto 2em;
+   margin: 0 auto 15px;
 }
-.gallery .gallery-item {
-   float: left;
-   display: block;
-   background: #fff;
-   margin: 10px 1.5% 20px;
+.gallery-item {
+   display: inline-block;
+   padding: 15px 2%;
    text-align: center;
+   vertical-align: top;
+   width: 100%;
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   box-sizing: border-box;
 }
-.gallery .gallery-item:hover { }
-.gallery .gallery-icon {
-   text-align: center;
-   padding: 0;
-   margin: 0;
-   overflow: hidden;
-   line-height: 0;
+.gallery-columns-3 .gallery-item,
+.gallery-columns-4 .gallery-item,
+.gallery-columns-5 .gallery-item {
+   padding: 15px 1%;
 }
-.gallery-columns-1 .gallery-item { float: none; text-align: center; width:100%; margin: 10px 0 20px; }
-.gallery-columns-2 .gallery-item { width:47%; }
-.gallery-columns-3 .gallery-item { width:30.33%; }
-.gallery-columns-4 .gallery-item { width:22%; }
-.gallery-columns-5 .gallery-item { width:17%; }
-.gallery-columns-6 .gallery-item { width:13.6%; }
-.gallery-columns-7 .gallery-item { width:12.25%; margin:10px 1% 10px; }
-.gallery-columns-8 .gallery-item { width:10.5%; margin:10px 1% 10px; }
-.gallery-columns-9 .gallery-item { width:9.11%; margin:10px 1% 10px; }
-.gallery dl a {
-   display: block;
+.gallery-columns-6 .gallery-item,
+.gallery-columns-7 .gallery-item,
+.gallery-columns-8 .gallery-item,
+.gallery-columns-9 .gallery-item {
+   padding: 10px 0.5%;
 }
-.gallery dl a img {
-   height: auto;
+.gallery-columns-2 .gallery-item { width:50%; }
+.gallery-columns-3 .gallery-item { width:33.33%; }
+.gallery-columns-4 .gallery-item { width:25%; }
+.gallery-columns-5 .gallery-item { width:20%; }
+.gallery-columns-6 .gallery-item { width:16.66%; }
+.gallery-columns-7 .gallery-item { width:14.28%; }
+.gallery-columns-8 .gallery-item { width:12.5%; }
+.gallery-columns-9 .gallery-item { width:11.11%; }
+.gallery-icon img {
    margin: 0 auto;
 }
 .gallery .gallery-caption {
-   font-size: 20px;
+   font-size: 12px;
    line-height: 1.2;
-   margin: 10px 0 0;
+   padding-top: 5px;
 }
-.gallery br+br { display:none; }
 
 /*--------------------------------------------------------------
 10.0 Extras
@@ -812,11 +812,16 @@ img#wpstats {
    text-decoration: inherit;
    color: #fff;
    font-size: 30px;
-   padding: 10px 24px;
+   padding: 0;
    display: block;
 }
 .slide-prev a:before { content: "\f104"; }
 .slide-next a:before { content: "\f105"; }
+
+.slide-prev a, .slide-next a {
+   padding: 10px 24px;
+   display: block;
+}
 
 /*
 ====> 10.2 Search Design
@@ -1293,6 +1298,7 @@ body.wide {
    padding-bottom: 0;
    color: #888888;
    font-weight: 300;
+   margin-bottom: 0;
 }
 #header-right-section {
    float: right;
@@ -1487,6 +1493,15 @@ article.post {
 /*
 ====> 13.6 Pagination
 --------------------------------------------------------------*/
+
+.default-wp-page li.previous {
+  float: left;
+}
+
+.default-wp-page li.next {
+  float: right;
+}
+
 .previous a,
 .next a {
    color: #80abc8;
@@ -1550,7 +1565,8 @@ article.post {
 }
 .bypostauthor {
 }
-#comments h2.comments-title {
+#comments h2.comments-title,
+#comments h3.comments-title {
    margin-bottom: 10px;
 }
 .avatar {
@@ -1654,6 +1670,9 @@ li.comment {
 }
 .form-allowed-tags {
    display: none;
+}
+.error404 .page-title {
+  font-size: 30px;
 }
 
 /*
@@ -1859,7 +1878,7 @@ a#scroll-up:hover {
       padding-top: 0;
    }
    .menu-toggle {
-      margin-top: 30px;
+      margin-top: 28px;
       right: 48px;
       position: absolute;
    }
@@ -1945,6 +1964,14 @@ a#scroll-up:hover {
       float: none;
       text-align: center;
    }
+
+   .logo-disable #site-navigation > .menu {
+     padding-top: 60px;
+   }
+
+   .logo-disable .main-head-wrap.inner-wrap {
+     padding: 0;
+   }
 }
 @media screen and (max-width: 767px) {
    #primary, #secondary,
@@ -1989,6 +2016,24 @@ a#scroll-up:hover {
       float: none;
       width: 100%;
    }
+   .gallery-columns-4 .gallery-item,
+   .gallery-columns-5 .gallery-item,
+   .gallery-columns-6 .gallery-item,
+   .gallery-columns-7 .gallery-item,
+   .gallery-columns-8 .gallery-item,
+   .gallery-columns-9 .gallery-item {
+      width:25%;
+   }
+}
+@media only screen and (max-width: 420px) {
+   .gallery-columns-4 .gallery-item,
+   .gallery-columns-5 .gallery-item,
+   .gallery-columns-6 .gallery-item,
+   .gallery-columns-7 .gallery-item,
+   .gallery-columns-8 .gallery-item,
+   .gallery-columns-9 .gallery-item {
+      width:33.33%;
+   }
 }
 @media screen and (max-width: 400px) {
    .big-slider .entry-title {
@@ -2005,4 +2050,9 @@ a#scroll-up:hover {
       float: none;
       width: 100%;
    }
+}
+
+/* Remove the updated class from entry meta */
+.entry-date .updated {
+  display: none;
 }

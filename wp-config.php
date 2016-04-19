@@ -22,7 +22,7 @@ define('DB_NAME', 'syscontrol');
 define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', '');
+define('DB_PASSWORD', 'portnoy');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
