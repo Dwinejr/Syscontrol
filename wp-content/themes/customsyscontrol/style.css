@@ -54,4 +54,8 @@ footer#footer a,footer#footer p {
 font-size: 13px;
 }
 
-/* "\f0f7" - outro endereço */ 
+/* Edit de CSS para formulário Gravity Forms */
+
+.uneditable-input, input[type=text], input[type=password], input[type=datetime], input[type=datetime-local], input[type=date], input[type=month], input[type=time], input[type=week], input[type=number], input[type=email], input[type=url], input[type=tel], input[type=color], input[type=search], select, textarea {
+    height: 30px; /* Sobrescreve o CSS atual */
+}
