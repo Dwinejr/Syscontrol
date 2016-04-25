@@ -241,8 +241,8 @@ if ( ! class_exists( 'TC_footer_main' ) ) :
 		    		apply_filters( 'tc_colophon_center_block_class', 'span6 credits' ),
 		    		sprintf( '<p>%1$s %2$s %3$s</p>',
 						    apply_filters( 'tc_copyright_link', sprintf( '&middot; <span class="tc-copyright-text">&copy; %1$s</span> <a href="%2$s" title="%3$s" rel="bookmark">%3$s</a>', esc_attr( date( 'Y' ) ), esc_url( home_url() ), esc_attr( get_bloginfo() ) ) ),
-                            apply_filters( 'tc_credit_link', sprintf( '&middot; <span class="tc-credits-text">Designed by</span> %1$s', '<a href="'.TC_WEBSITE.'">Press Customizr</a>' ) ),
-                            apply_filters( 'tc_wp_powered', sprintf( '&middot; <span class="tc-wp-powered-text">%1$s</span> <a class="icon-wordpress" target="_blank" href="https://wordpress.org" title="%2$s"></a> &middot;',
+                            apply_filters( 'tc_credit_link', sprintf( '&middot; <span class="tc-credits-text">Designed by</span> %1$s', '<a href="mailto:dwinejr@gmail.com">Dwine Júnior</a>' ) ),
+                            apply_filters( 'tc_wp_powered', sprintf( '<span class="tc-wp-powered-text"></span>',
                               __('Powered by', 'customizr'),
                               __('Powered by Wordpress', 'customizr')
                             ))
