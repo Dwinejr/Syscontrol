@@ -59,3 +59,15 @@ font-size: 13px;
 .uneditable-input, input[type=text], input[type=password], input[type=datetime], input[type=datetime-local], input[type=date], input[type=month], input[type=time], input[type=week], input[type=number], input[type=email], input[type=url], input[type=tel], input[type=color], input[type=search], select, textarea {
     height: 30px; /* Sobrescreve o CSS atual */
 }
+
+/* Troca de cor no título das páginas */
+
+.site-title, .site-description, h1, h2, h3, .tc-dropcap {
+    color: #bb0d0d;
+}
+
+/* Ajuste na altura entre título e texto  */
+
+.featurette-divider {
+    margin: 15px 0;
+}
